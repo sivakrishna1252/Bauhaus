@@ -32,7 +32,7 @@ const rightLinks: NavLink[] = [
 
   { href: '/faq', label: 'FAQ' },
   { href: '/blog', label: 'Blog' },
-  { href: '/carrers', label: 'Carrers' },
+  { href: '/careers', label: 'Careers' },
 
 ];
 
