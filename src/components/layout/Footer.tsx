@@ -1,17 +1,29 @@
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { cn } from '@/lib/utils';
 
 export function Footer() {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <footer className="bg-charcoal text-background/90">
+    <footer
+      ref={ref}
+      className="bg-charcoal text-background/90"
+    >
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div
+            className={cn(
+              "lg:col-span-1 transition-all duration-700",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "0ms" }}
+          >
             <Link to="/" className="inline-block mb-6">
-              <span className="font-serif text-3xl font-medium text-background">
-                BauHaus<span className="text-gold">.</span>
-              </span>
+              <img src="/logo.png" alt="logo" />
             </Link>
             <p className="text-background/60 text-sm leading-relaxed mb-6">
               Premium interior design solutions in Pune. We transform spaces into extraordinary living experiences.
@@ -45,7 +57,13 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div
+            className={cn(
+              "transition-all duration-700",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "150ms" }}
+          >
             <h4 className="font-serif text-xl text-background mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
@@ -68,7 +86,13 @@ export function Footer() {
           </div>
 
           {/* Services */}
-          <div>
+          <div
+            className={cn(
+              "transition-all duration-700",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "300ms" }}
+          >
             <h4 className="font-serif text-xl text-background mb-6">Services</h4>
             <ul className="space-y-3">
               {[
@@ -86,7 +110,13 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div
+            className={cn(
+              "transition-all duration-700",
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            )}
+            style={{ transitionDelay: "450ms" }}
+          >
             <h4 className="font-serif text-xl text-background mb-6">Contact Us</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -97,24 +127,37 @@ export function Footer() {
                 </span>
               </li>
               <li>
-                <a href="tel:+918085010847" className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300">
+                <a
+                  href="tel:+918085010847"
+                  className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300"
+                >
                   <Phone className="w-5 h-5 text-gold shrink-0" />
                   +91 808 5010 847
                 </a>
               </li>
               <li>
-                <a href="mailto:info@bauhauspaces.com" className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300">
+                <a
+                  href="mailto:info@bauhauspaces.com"
+                  className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300"
+                >
                   <Mail className="w-5 h-5 text-gold shrink-0" />
                   info@bauhauspaces.com
                 </a>
               </li>
             </ul>
           </div>
+
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-background/10">
+      <div
+        className={cn(
+          "border-t border-background/10 transition-all duration-700",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        )}
+        style={{ transitionDelay: "600ms" }}
+      >
         <div className="container-custom py-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/40">
             © {new Date().getFullYear()} BauHaus Spaces. All rights reserved.

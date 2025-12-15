@@ -38,12 +38,26 @@ export function ProcessSection() {
   return (
     <section className="section-padding bg-secondary" ref={ref}>
       <div className="container-custom">
+
+        {/* ✅ ONLY THIS MOVED TO CENTER */}
+        <div className="text-center mb-12">
+          <p className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
+            Our Process
+          </p>
+          <div className="w-14 h-[2px] bg-gold mx-auto" />
+        </div>
+
+
+        {/* GRID (unchanged) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
           {/* Image */}
-          <div className={cn(
-            "relative transition-all duration-700",
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          )}>
+          <div
+            className={cn(
+              "relative transition-all duration-700",
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+            )}
+          >
             <div className="aspect-square overflow-hidden">
               <img
                 src={consultationImage}
@@ -51,18 +65,19 @@ export function ProcessSection() {
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-gold/30 hidden lg:block" />
+            {/* square decorative box REMOVED */}
           </div>
 
-          {/* Content */}
-          <div className={cn(
-            "transition-all duration-700",
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-          )}>
-            <p className="text-gold text-sm tracking-[0.3em] uppercase mb-4">Our Process</p>
+          {/* Content (AS-IS) */}
+          <div
+            className={cn(
+              "transition-all duration-700",
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+            )}
+          >
+            {/* stays exactly here */}
             <h2 className="font-serif text-4xl md:text-5xl text-foreground mb-8">
-              5 Steps to Your Dream Space
+              Steps to Your Dream Space
             </h2>
 
             <div className="space-y-6 mb-10">
@@ -75,12 +90,14 @@ export function ProcessSection() {
                   )}
                   style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                 >
-                  <span className="text-gold font-serif text-2xl shrink-0 w-12">
+                  <span className="text-black font-serif text-2xl shrink-0 w-12">
                     {step.number}
                   </span>
                   <div>
-                    <h4 className="font-serif text-xl text-foreground mb-1">{step.title}</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
+                    <h4 className="font-serif text-xl text-black mb-1">
+                      {step.title}
+                    </h4>
+                    <p className="text-black text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </div>
@@ -92,6 +109,7 @@ export function ProcessSection() {
               <Link to="/how-it-works">Learn More</Link>
             </Button>
           </div>
+
         </div>
       </div>
     </section>

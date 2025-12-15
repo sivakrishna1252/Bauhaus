@@ -47,7 +47,7 @@ const ModularKitchens = () => {
     <Layout>
       {/* Hero */}
       <section className="relative hero-padding bg-charcoal overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -89,7 +89,7 @@ const ModularKitchens = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-background/80 text-lg leading-relaxed mb-10"
             >
-              Elevate your culinary experience with our expertly designed modular kitchens. 
+              Elevate your culinary experience with our expertly designed modular kitchens.
               We combine functionality with aesthetics to create the heart of your home.
             </motion.p>
             <motion.div
@@ -97,7 +97,9 @@ const ModularKitchens = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Button variant="gold" size="xl" asChild>
+              {/* <Button variant="gold" size="xl" asChild> */}
+              <Button variant="elegant" size="lg" asChild>
+
                 <Link to="/contact">Get in Touch</Link>
               </Button>
             </motion.div>
@@ -157,21 +159,21 @@ const ModularKitchens = () => {
                 materialsVisible ? "scale-x-100" : "scale-x-0"
               )} style={{ transitionDelay: '200ms' }} />
               <p className="text-muted-foreground text-lg leading-relaxed mb-12">
-                All of our modular kitchens feature the best materials in the manufacturing 
+                All of our modular kitchens feature the best materials in the manufacturing
                 process, with a range of finishes to choose from that effortlessly match your style.
               </p>
 
               <div className="space-y-8">
                 {materials.map((material, index) => (
-                  <div 
-                    key={material.name} 
+                  <div
+                    key={material.name}
                     className={cn(
                       "flex gap-6 group transition-all duration-700",
                       materialsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     )}
                     style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                   >
-                    <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-500">
+                    <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center shrink-0 group-hover:bg-black transition-colors duration-500">
                       <Check className="w-6 h-6 text-gold group-hover:text-background transition-colors duration-500" />
                     </div>
                     <div className="pt-2">
@@ -198,7 +200,7 @@ const ModularKitchens = () => {
       </section>
 
       {/* Features */}
-      <section className="section-padding bg-charcoal" ref={featuresRef}>
+      <section className="section-padding bg-black" ref={featuresRef}>
         <div className="container-custom">
           <div className={cn(
             "text-center max-w-2xl mx-auto mb-20 transition-all duration-1000",
@@ -216,8 +218,8 @@ const ModularKitchens = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
             {features.map((feature, index) => (
-              <div 
-                key={feature} 
+              <div
+                key={feature}
                 className={cn(
                   "flex items-center gap-4 group transition-all duration-700",
                   featuresVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

@@ -46,8 +46,20 @@ const Portfolio = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="hero-padding bg-secondary">
-        <div className="container-custom">
+      <section className="relative hero-padding bg-charcoal overflow-hidden">
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <img
+            src={project3}
+            alt="Portfolio Hero"
+            className="w-full h-full object-cover opacity-40"
+          />
+        </motion.div>
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -61,7 +73,7 @@ const Portfolio = () => {
               initial={{ opacity: 0, y: 40, filter: 'blur(4px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-serif text-5xl md:text-6xl lg:text-7xl text-foreground mb-8"
+              className="font-serif text-5xl md:text-6xl lg:text-7xl text-background mb-8"
             >
               Our Portfolio
             </motion.h1>
@@ -75,9 +87,9 @@ const Portfolio = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="text-muted-foreground text-lg leading-relaxed"
+              className="text-background/80 text-lg leading-relaxed"
             >
-              Every great design begins with a great story. Explore our collection of 
+              Every great design begins with a great story. Explore our collection of
               thoughtfully designed homes and spaces.
             </motion.p>
           </div>

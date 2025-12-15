@@ -91,6 +91,9 @@ export function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] mb-8"
               >
+                {/* 
+                #test wii be black change italic text-black */}
+
                 {slides[currentImageIndex].title}{' '}
                 <span className="italic text-gold-light">{slides[currentImageIndex].highlight}</span>
               </motion.h1>
@@ -101,6 +104,8 @@ export function HeroSection() {
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="w-24 h-px bg-gold origin-left mb-8"
+              // className="w-24 h-px bg-black origin-left mb-8"
+
               />
 
               {/* Description */}
@@ -126,8 +131,10 @@ export function HeroSection() {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
-                <Button variant="gold" size="xl" asChild>
-                  <Link to="/contact">Book Consultation</Link>
+                {/* <Button variant="gold" size="xl" asChild> */}
+                <Button variant="default" size="xl" asChild>
+
+                  <Link to="/contact" >Book Consultation</Link>
                 </Button>
               </motion.div>
             </motion.div>
@@ -145,6 +152,8 @@ export function HeroSection() {
               "h-1 transition-all duration-300 rounded-full",
               index === currentImageIndex
                 ? "w-8 bg-gold"
+                // #test wii be black change bg-gold
+
                 : "w-4 bg-white/50 hover:bg-white/80"
             )}
             aria-label={`Go to slide ${index + 1}`}

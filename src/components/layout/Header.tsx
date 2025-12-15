@@ -1,23 +1,39 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 import logo from '@/assets/logo.png';
 
-const leftLinks = [
+interface NavLink {
+  href: string;
+  label: string;
+  isButton?: boolean;
+  subLinks?: { href: string; label: string }[];
+}
+
+const leftLinks: NavLink[] = [
   { href: '/', label: 'Home' },
-  { href: '/portfolio', label: 'Our Projects' },
+  { href: '/about', label: 'About Us' },
+  {
+    href: '/portfolio',
+    label: 'Our Projects',
+    subLinks: [
+      { href: '/projects/commercial', label: 'Commercial' },
+      { href: '/projects/residential', label: 'Residential' },
+    ]
+  },
   { href: '/modular-kitchens', label: 'Offerings' },
   { href: '/how-it-works', label: 'How it works' },
 ];
 
-const rightLinks = [
-  { href: '/about', label: 'About Us' },
+const rightLinks: NavLink[] = [
+
   { href: '/faq', label: 'FAQ' },
   { href: '/blog', label: 'Blog' },
-  { href: '/careers', label: 'Careers' },
+  { href: '/carrers', label: 'Carrers' },
+
 ];
 
 export function Header() {
@@ -38,16 +54,17 @@ export function Header() {
   }, [location.pathname]);
 
   // Determine if we're on a page with a dark hero
-  const hasDarkHero = ['/', '/modular-kitchens', '/bathrooms', '/how-it-works'].includes(location.pathname);
-  // Always show light text on dark hero unless scrolled, BUT user wanted visible bg on scroll so text might need to flip
-  // If background becomes opaque (light/dark theme dependent), text needs to contrast.
-  // Assuming default theme is light but hero is dark? Or dark mode?
-  // Let's stick to the existing logic but ensure background opacity works.
-
-  // Refined Logic based on request: "header bg visible ga vundali" (header bg should be visible).
-  // When scrolled, we use a solid background. The text color should adapt to that background.
+  const hasDarkHero = ['/', '/modular-kitchens', '/bathrooms', '/how-it-works'].includes(location.pathname) || location.pathname.startsWith('/projects/');
 
   const isTransparent = !isScrolled && hasDarkHero;
+
+  const isActive = (link: NavLink) => {
+    if (location.pathname === link.href) return true;
+    if (link.subLinks) {
+      return link.subLinks.some(sub => location.pathname === sub.href);
+    }
+    return false;
+  };
 
   return (
     <header
@@ -68,11 +85,6 @@ export function Header() {
               alt="BauHaus"
               className={cn(
                 "h-8 w-auto transition-all duration-300",
-                // Logo should be white on dark hero (isTransparent) AND on dark scroll (!isTransparent)
-                // If logo is natively black/colored, use invert brightness-0 invert to make it white.
-                // Assuming logo is natively white? Or check if it needs inversion?
-                // If logo works on dark hero (isTransparent), it's probably white or inverted to white.
-                // Let's assume we always want it WHITE since background is always dark now.
                 "brightness-0 invert"
               )}
             />
@@ -80,8 +92,8 @@ export function Header() {
         </div>
 
         {/* Navigation (Right Aligned) */}
-        <nav className="hidden lg:flex items-center gap-8 xl:gap-12 flex-1 justify-end">
-          {[...leftLinks, ...rightLinks, { href: '/contact', label: 'Contact Us', isButton: true }].map((link: { href: string; label: string; isButton?: boolean }) => (
+        <nav className="hidden lg:flex items-center gap-8 xl:gap-12 flex-1 justify-center">
+          {[...leftLinks, ...rightLinks, { href: '/contact', label: 'Contact Us', isButton: true }].map((link) => (
             link.isButton ? (
               <Button
                 key={link.label}
@@ -90,32 +102,52 @@ export function Header() {
                 asChild
                 className={cn(
                   "ml-4 rounded-full border-2 px-6 tracking-[0.1em] uppercase text-xs font-bold h-10 transition-all duration-300",
-                  // Always white text/border since background is always dark (transparent or neutral-900)
                   "border-white text-white hover:bg-white hover:text-black",
-                  location.pathname === link.href && "bg-white text-black border-white"
+                  isActive(link) && "bg-white text-black border-white"
                 )}
               >
                 <Link to={link.href}>{link.label}</Link>
               </Button>
             ) : (
-              <Link
-                key={link.label}
-                to={link.href}
-                className={cn(
-                  "text-[15px] font-bold tracking-[0.1em] uppercase transition-colors duration-300 relative group py-1",
-                  // Always white text since background is always dark
-                  "text-white/90 hover:text-white",
-                  location.pathname === link.href && "text-white"
+              <div key={link.label} className="relative group">
+                <Link
+                  to={link.href}
+                  className={cn(
+                    "text-xs font-bold tracking-[0.1em] uppercase transition-colors duration-300 relative py-1 flex items-center gap-1",
+                    "text-white/90 hover:text-white",
+                    isActive(link) && "text-white"
+                  )}
+                >
+                  {link.label}
+                  {link.subLinks && <ChevronDown className="w-4 h-4" />}
+                  <span className={cn(
+                    "absolute -bottom-1 left-0 w-full h-[3px] transition-transform duration-300 scale-x-0 group-hover:scale-x-100",
+                    "bg-white",
+                    isActive(link) && "scale-x-100" // Active indicator
+                  )} />
+                </Link>
+
+                {/* Dropdown Menu */}
+                {link.subLinks && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 min-w-[240px]">
+                    <div className="bg-white rounded-lg shadow-2xl py-3 flex flex-col">
+                      {link.subLinks.map((subLink, index) => (
+                        <Link
+                          key={subLink.href}
+                          to={subLink.href}
+                          className={cn(
+                            "px-6 py-3 text-[13px] font-bold tracking-[0.1em] uppercase transition-all duration-200 hover:text-gold text-start",
+                            location.pathname === subLink.href ? "text-gold bg-gold/5" : "text-neutral-600",
+                            index !== link.subLinks!.length - 1 && "border-b border-gray-100"
+                          )}
+                        >
+                          {subLink.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 )}
-              >
-                {link.label}
-                <span className={cn(
-                  "absolute -bottom-1 left-0 w-full h-[3px] transition-transform duration-300 scale-x-0 group-hover:scale-x-100",
-                  // Always white underline
-                  "bg-white",
-                  location.pathname === link.href && "scale-x-100" // Active indicator
-                )} />
-              </Link>
+              </div>
             )
           ))}
         </nav>
@@ -126,7 +158,7 @@ export function Header() {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={cn(
               "p-2 transition-colors duration-300",
-              "text-white" // Always white since background is dark
+              "text-white"
             )}
             aria-label="Toggle menu"
           >
@@ -144,19 +176,38 @@ export function Header() {
       >
         <nav className="container-custom flex flex-col gap-4 text-center">
           {[...leftLinks, ...rightLinks].map((link) => (
-            <Link
-              key={link.label}
-              to={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className={cn(
-                "text-[15px] font-bold tracking-[0.1em] uppercase py-2 transition-colors duration-300",
-                location.pathname === link.href
-                  ? "text-primary"
-                  : "text-foreground/80 hover:text-foreground"
+            <div key={link.label}>
+              <Link
+                to={link.href}
+                onClick={() => !link.subLinks && setIsMobileMenuOpen(false)}
+                className={cn(
+                  "text-[15px] font-bold tracking-[0.1em] uppercase py-2 transition-colors duration-300 block",
+                  isActive(link)
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-foreground"
+                )}
+              >
+                {link.label}
+              </Link>
+              {/* Mobile Sublinks */}
+              {link.subLinks && (
+                <div className="flex flex-col gap-2 mt-2 bg-secondary/30 py-2 rounded-md">
+                  {link.subLinks.map(subLink => (
+                    <Link
+                      key={subLink.href}
+                      to={subLink.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className={cn(
+                        "text-sm font-medium uppercase py-2 transition-colors duration-300",
+                        location.pathname === subLink.href ? "text-gold" : "text-muted-foreground"
+                      )}
+                    >
+                      {subLink.label}
+                    </Link>
+                  ))}
+                </div>
               )}
-            >
-              {link.label}
-            </Link>
+            </div>
           ))}
           <Button variant="default" size="lg" asChild className="mt-4 mx-auto w-fit">
             <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>

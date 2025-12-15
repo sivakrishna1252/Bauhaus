@@ -36,29 +36,21 @@ export function ProjectsSection() {
       <div className="container-custom">
         {/* Header */}
         <div className={cn(
-          "flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 transition-all duration-1000",
+          "text-center mb-16 transition-all duration-1000",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         )}>
-          <div>
-            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Featured Work</p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
-              Our Projects
-            </h2>
-            <div className={cn(
-              "w-16 h-px bg-gold mt-6 transition-transform duration-1000 origin-left",
-              isVisible ? "scale-x-100" : "scale-x-0"
-            )} style={{ transitionDelay: '200ms' }} />
-          </div>
-          <Button variant="elegant-outline" size="lg" asChild>
-            <Link to="/portfolio">
-              View All Projects
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
-          </Button>
+          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Featured Work</p>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
+            Our Projects
+          </h2>
+          <div className={cn(
+            "w-16 h-px bg-gold mt-6 mx-auto transition-transform duration-1000 origin-center",
+            isVisible ? "scale-x-100" : "scale-x-0"
+          )} style={{ transitionDelay: '200ms' }} />
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-16">
           {/* Featured Large Project */}
           <Link
             to="/portfolio"
@@ -115,6 +107,19 @@ export function ProjectsSection() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* View All Projects Button */}
+        <div className={cn(
+          "text-center transition-all duration-1000",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        )} style={{ transitionDelay: '600ms' }}>
+          <Button variant="elegant-outline" size="lg" asChild>
+            <Link to="/portfolio">
+              View All Projects
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

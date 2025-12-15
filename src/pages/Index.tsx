@@ -5,6 +5,9 @@ import { ProjectsSection } from '@/components/sections/ProjectsSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CTASection } from '@/components/sections/CTASection';
+import { BrandPartners } from '@/components/sections/BrandPartners';
+import Faq from '@/components/sections/Faq';
+
 
 const Index = () => {
   return (
@@ -15,6 +18,10 @@ const Index = () => {
       <ProcessSection />
       <TestimonialsSection />
       <CTASection />
+      <Faq />
+
+      <BrandPartners />
+
     </Layout>
   );
 };
