@@ -23,9 +23,9 @@ const botReplies = [
         reply: `📞 You can call us directly at ${SUPPORT_NUMBER}`
     },
     {
-        keywords: ["kitchen", "modular"],
+        keywords: ["kitchen", "modular", "furniture", "design", "designer", "designing"],
         reply:
-            "Yes 😊 We specialize in modular kitchens. Would you like a free design consultation?"
+            "YES 😊 We specialize in Furniture Design we are here to help you with your design needs"
     },
     {
         keywords: ["interior", "home", "design"],
@@ -38,10 +38,15 @@ const botReplies = [
             `Pricing depends on scope and size. Please call us at ${SUPPORT_NUMBER} for exact details.`
     },
     {
-        keywords: ["bauhaus", "agent", "chat widget"],
+        keywords: ["bauhaus", "details", "find"],
         reply:
-            `Chat with our AI chatbot for instant responses. How can we help you?`
-    }
+            `yeah Nice to meet you Bauhaus Spaces is a modular furniture design company if you need any details for this type of questions please call us at ${SUPPORT_NUMBER}`
+    },
+    {
+        keywords: ["Okay", "thank you", "bye", "Bye"],
+        reply:
+            'Thank you for your time have a great day'
+    },
 ];
 
 export default function ChatWidget({ onClose }: { onClose: () => void }) {

@@ -47,7 +47,7 @@ export function ServicesSection() {
             isVisible ? "scale-x-100" : "scale-x-0"
           )} style={{ transitionDelay: '200ms' }} />
           <p className="text-muted-foreground text-lg leading-relaxed">
-            From modular kitchens to complete home interiors, we bring expertise 
+            From modular kitchens to complete home interiors, we bring expertise
             and attention to detail in every project we undertake.
           </p>
         </div>

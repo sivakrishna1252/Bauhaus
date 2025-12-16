@@ -95,7 +95,7 @@ export default function FAQ() {
                     px-6
                     py-5
                     rounded-lg
-                    bg-[#1c1c1c]
+                    bg-charcoal
                     text-white
                     text-left
                     font-medium

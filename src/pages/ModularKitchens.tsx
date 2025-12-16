@@ -31,7 +31,7 @@ const materials = [
 
 const features = [
   '10-Year Warranty',
-  'Haefele Hardware',
+  'Jameline Hardware',
   'Soft-Close Mechanisms',
   'Premium Finishes',
   'Customized Designs',

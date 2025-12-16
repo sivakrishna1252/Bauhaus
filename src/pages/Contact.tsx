@@ -7,6 +7,15 @@ import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
 import heroImage from '@/assets/hero-living-room.jpg';
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+  SelectLabel,
+} from "@/components/ui/select";
+
 
 const Contact = () => {
   const { toast } = useToast();
@@ -69,25 +78,31 @@ const Contact = () => {
           variants={fadeInUp}
           className="container-custom max-w-5xl text-center"
         >
-          <p className="font-cursive text-black text-2xl mb-4">LOCATION</p>
+          <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-black mb-8">LOCATION</p>
+          <br>
+          </br>
 
           {/* MAP */}
-          <div
-            className="w-full h-[360px] mb-10 rounded-lg overflow-hidden border border-border/40 cursor-pointer"
-            onClick={() =>
-              window.open(
-                'https://www.google.com/maps/search/?api=1&query=Hermes+Vishal+Koregaon+Park+Pune',
-                '_blank'
-              )
-            }
-          >
-            <iframe
-              title="BauHaus Spaces Location"
-              src="https://www.google.com/maps?q=Hermes%20Vishal%20Koregaon%20Park%20Pune&output=embed"
-              className="w-full h-full border-0"
-              loading="lazy"
-            />
-          </div>
+          {/* FULL WIDTH MAP */}
+          <section className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] mb-20">
+            <div
+              className="w-full h-[600px] overflow-hidden cursor-pointer"
+              onClick={() =>
+                window.open(
+                  'https://www.google.com/maps/search/?api=1&query=Hermes+Vishal+Koregaon+Park+Pune',
+                  '_blank'
+                )
+              }
+            >
+              <iframe
+                src="https://www.google.com/maps?q=Hermes%20Vishal%20Koregaon%20Park%20Pune&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </section>
+
 
           {/* ADDRESS */}
           <p className="max-w-3xl mx-auto font-medium text-lg md:text-xl text-foreground leading-snug mb-8">
@@ -161,9 +176,33 @@ const Contact = () => {
 
             <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
               <Input placeholder="Your Name" />
-              <Input placeholder="Email Address" />
+
               <Input placeholder="Mobile Number" />
-              <Input placeholder="General Enquiries" />
+              <Select>
+                <SelectTrigger className="h-12">
+                  <SelectValue placeholder="Configuration of Property ?" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1bhk">1BHK</SelectItem>
+                  <SelectItem value="2bhk">2BHK</SelectItem>
+                  <SelectItem value="3bhk">3BHK</SelectItem>
+                  <SelectItem value="4bhk">4BHK+</SelectItem>
+                  <SelectItem value="commercial">Commercial</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <Select>
+                <SelectTrigger className="h-12">
+                  <SelectValue placeholder="Budget ?" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1bhk">10 -12 L</SelectItem>
+                  <SelectItem value="2bhk">12 -15 L</SelectItem>
+                  <SelectItem value="3bhk">15 -20 L</SelectItem>
+                  <SelectItem value="4bhk">20 -25 L</SelectItem>
+                  <SelectItem value="commercial">25 -30 L</SelectItem>
+                </SelectContent>
+              </Select>
               <Textarea
                 placeholder="Message..."
                 className="md:col-span-2 resize-none"

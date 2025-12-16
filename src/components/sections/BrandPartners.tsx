@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import asianPaints from '@/assets/asian-paints-logo.png';
 import greenply from '@/assets/greenplaylogo.png';
-import hettich from '@/assets/het_hettich.jpg';
+import hettich from '@/assets/het_hettich.png';
 import gyproc from '@/assets/gyproc-logo.png';
 import hafele from '@/assets/hafele-logoo.png';
 import woodenStreet from '@/assets/Wooden_Street-Logo.wine.png';

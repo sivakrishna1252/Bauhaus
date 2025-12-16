@@ -104,7 +104,7 @@ export default function Careers() {
                     </div>
 
                     {/* QUICK APPLY */}
-                    <div className="bg-white p-8 border border-border/40 h-fit mt-12 lg:mt-16">
+                    <div className="bg-white p-6 border border-border/60 h-fit mt-36 lg:mt-20">
 
                         <h3 className="font-serif text-xl mb-6">Quick Apply</h3>
 

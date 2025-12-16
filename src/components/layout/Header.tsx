@@ -170,18 +170,18 @@ export function Header() {
       {/* Mobile Menu Overlay */}
       <div
         className={cn(
-          "lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border transition-all duration-300 ease-out overflow-hidden shadow-lg",
-          isMobileMenuOpen ? "max-h-[600px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+          "lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border transition-all duration-60 ease-out overflow-hidden shadow-lg",
+          isMobileMenuOpen ? "h-screen opacity-100 py-6 overflow-y-auto" : "h-0 opacity-0 py-0 overflow-hidden"
         )}
       >
-        <nav className="container-custom flex flex-col gap-4 text-center">
+        <nav className="container-custom flex flex-col gap-4 text-center pb-32">
           {[...leftLinks, ...rightLinks].map((link) => (
             <div key={link.label}>
               <Link
                 to={link.href}
                 onClick={() => !link.subLinks && setIsMobileMenuOpen(false)}
                 className={cn(
-                  "text-[15px] font-bold tracking-[0.1em] uppercase py-2 transition-colors duration-300 block",
+                  "text-[15px] font-bold tracking-[0.1em] uppercase py-2 transition-colors duration-60 block",
                   isActive(link)
                     ? "text-primary"
                     : "text-foreground/80 hover:text-foreground"
