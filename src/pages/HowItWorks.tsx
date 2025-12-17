@@ -150,7 +150,7 @@ const HowItWorks = () => {
                 {/*  UPDATED STEP NUMBER */}
                 <div
                   className={cn(
-                    "absolute left-0 top-0 w-14 h-14 bg-black text-white font-serif text-xl flex items-center justify-center transition-all duration-500",
+                    "absolute left-0 top-0 w-14 h-14 bg-charcoal text-white font-serif text-xl flex items-center justify-center transition-all duration-500",
                     isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"
                   )}
                   style={{ transitionDelay: `${index * 150}ms` }}
@@ -186,7 +186,7 @@ const HowItWorks = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div
               className={cn(
-                'aspect-square img-scale-reveal transition-all duration-1000',
+                'aspect-square img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden',
                 ctaVisible
                   ? 'opacity-100 translate-x-0 is-visible'
                   : 'opacity-0 -translate-x-12'

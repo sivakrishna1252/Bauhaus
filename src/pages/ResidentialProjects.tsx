@@ -22,6 +22,13 @@ const residentialProjects = [
         image: heroImage,
         description: 'Minimalist design focused on creating calm, functional living spaces.',
     },
+    {
+        title: 'Minimalist Studio',
+        client: 'Ms. Ananya',
+        location: 'Aundh, Pune',
+        image: project1, // Placeholder image reused
+        description: 'A compact yet luxurious studio apartment making efficient use of every square foot.',
+    },
 ];
 
 const ResidentialProjects = () => {
@@ -93,7 +100,7 @@ const ResidentialProjects = () => {
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
                                 <div className={cn(
-                                    "aspect-[16/12] img-scale-reveal mb-8",
+                                    "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
                                     isVisible && "is-visible"
                                 )}>
                                     <img

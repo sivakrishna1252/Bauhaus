@@ -33,7 +33,7 @@ const Bathrooms = () => {
     <Layout>
       {/* Hero */}
       <section className="relative hero-padding bg-charcoal overflow-hidden">
-        <motion.div 
+        <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
@@ -75,7 +75,7 @@ const Bathrooms = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-background/80 text-lg leading-relaxed mb-10"
             >
-              Transform your bathroom into a luxurious spa-like retreat. 
+              Transform your bathroom into a luxurious spa-like retreat.
               We specialize in creating functional, beautiful bathroom spaces.
             </motion.p>
             <motion.div
@@ -107,7 +107,7 @@ const Bathrooms = () => {
               isVisible ? "scale-x-100" : "scale-x-0"
             )} style={{ transitionDelay: '200ms' }} />
             <p className="text-muted-foreground text-lg leading-relaxed">
-              From minor updates to complete overhauls, we handle every aspect 
+              From minor updates to complete overhauls, we handle every aspect
               of bathroom design and renovation.
             </p>
           </div>
@@ -117,7 +117,7 @@ const Bathrooms = () => {
               <div
                 key={service.title}
                 className={cn(
-                  "p-10 lg:p-14 bg-secondary card-hover transition-all duration-700",
+                  "p-10 lg:p-14 bg-secondary card-hover transition-all duration-700 rounded-2xl",
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 )}
                 style={{ transitionDelay: `${(index + 1) * 100}ms` }}
@@ -135,7 +135,7 @@ const Bathrooms = () => {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className={cn(
-              "aspect-[4/5] img-scale-reveal transition-all duration-1000",
+              "aspect-[4/5] img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden",
               craftVisible ? "opacity-100 translate-x-0 is-visible" : "opacity-0 -translate-x-12"
             )}>
               <img
@@ -157,13 +157,13 @@ const Bathrooms = () => {
                 craftVisible ? "scale-x-100" : "scale-x-0"
               )} style={{ transitionDelay: '400ms' }} />
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Our team of skilled professionals brings years of experience in bathroom 
-                renovations. We work with premium materials and trusted brands to ensure 
+                Our team of skilled professionals brings years of experience in bathroom
+                renovations. We work with premium materials and trusted brands to ensure
                 lasting quality.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                From concept to completion, we manage every detail of your project, 
-                ensuring a seamless renovation experience with minimal disruption to 
+                From concept to completion, we manage every detail of your project,
+                ensuring a seamless renovation experience with minimal disruption to
                 your daily life.
               </p>
               <Button variant="elegant" size="xl" asChild>

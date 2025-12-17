@@ -110,7 +110,7 @@ const Portfolio = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <div className={cn(
-                  "aspect-[16/12] img-scale-reveal mb-8",
+                  "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
                   isVisible && "is-visible"
                 )}>
                   <img

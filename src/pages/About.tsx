@@ -163,7 +163,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
-                            className="bg-white/5 p-10 rounded-sm hover:bg-white/10 transition-colors border border-white/10 group"
+                            className="bg-white/5 p-10 rounded-xl hover:bg-white/10 transition-colors border border-white/10 group"
                         >
                             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-6 text-white">
                                 <CircleDollarSign className="w-8 h-8" />
@@ -180,7 +180,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-white/5 p-10 rounded-sm hover:bg-white/10 transition-colors border border-white/10 group"
+                            className="bg-white/5 p-10 rounded-xl hover:bg-white/10 transition-colors border border-white/10 group"
                         >
                             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-6 text-white">
                                 <TrendingUp className="w-8 h-8" />
@@ -197,7 +197,7 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.4 }}
-                            className="bg-white/5 p-10 rounded-sm hover:bg-white/10 transition-colors border border-white/10 group"
+                            className="bg-white/5 p-10 rounded-xl hover:bg-white/10 transition-colors border border-white/10 group"
                         >
                             <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-6 text-white">
                                 <Users className="w-8 h-8" />
@@ -239,7 +239,7 @@ const About = () => {
                                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                                 className="group relative"
                                             >
-                                                <div className="relative overflow-hidden rounded-xl mb-6 shadow-md aspect-[3/4]">
+                                                <div className="relative overflow-hidden rounded-2xl mb-6 shadow-md aspect-[3/4]">
                                                     <img
                                                         src={member.image}
                                                         alt={member.name}

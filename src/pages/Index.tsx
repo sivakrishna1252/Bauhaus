@@ -6,6 +6,8 @@ import { ProcessSection } from '@/components/sections/ProcessSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 import { CTASection } from '@/components/sections/CTASection';
 import { BrandPartners } from '@/components/sections/BrandPartners';
+import { TermsSection } from '@/components/sections/TermsSection'; // Imported
+import { ContactPopup } from '@/components/ui/ContactPopup'; // Imported
 import Faq from '@/components/sections/Faq';
 
 
@@ -20,8 +22,10 @@ const Index = () => {
       <CTASection />
       <Faq />
 
+      <TermsSection />
       <BrandPartners />
 
+      <ContactPopup />
     </Layout>
   );
 };

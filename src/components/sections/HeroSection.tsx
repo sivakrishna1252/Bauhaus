@@ -132,7 +132,7 @@ export function HeroSection() {
                   </Link>
                 </Button>
                 {/* <Button variant="gold" size="xl" asChild> */}
-                <Button variant="default" size="xl" asChild>
+                <Button variant="default" size="xl" asChild >
 
                   <Link to="/contact" >Book Consultation</Link>
                 </Button>

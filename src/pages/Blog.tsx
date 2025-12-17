@@ -82,7 +82,7 @@ const Blog = () => {
                                 className="group cursor-pointer"
                             >
                                 <Link to={`/blog/${post.id}`}>
-                                    <div className="aspect-[4/3] overflow-hidden rounded-sm mb-6 bg-secondary/20">
+                                    <div className="aspect-[4/3] overflow-hidden rounded-2xl mb-6 bg-secondary/20">
                                         <img
                                             src={post.image}
                                             alt={post.title}

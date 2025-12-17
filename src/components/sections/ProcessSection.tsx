@@ -54,8 +54,7 @@ export function ProcessSection() {
           {/* Image */}
           <div
             className={cn(
-              "relative transition-all duration-700",
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+              'aspect-square img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden',
             )}
           >
             <div className="aspect-square overflow-hidden">

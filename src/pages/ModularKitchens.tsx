@@ -129,7 +129,7 @@ const ModularKitchens = () => {
               <div
                 key={type.name}
                 className={cn(
-                  "p-10 bg-secondary text-center card-hover transition-all duration-700",
+                  "p-10 bg-secondary text-center card-hover transition-all duration-700 rounded-2xl",
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 )}
                 style={{ transitionDelay: `${(index + 1) * 100}ms` }}
@@ -186,7 +186,7 @@ const ModularKitchens = () => {
             </div>
 
             <div className={cn(
-              "aspect-square img-scale-reveal transition-all duration-1000",
+              "aspect-square img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden",
               materialsVisible ? "opacity-100 translate-x-0 is-visible" : "opacity-0 translate-x-12"
             )} style={{ transitionDelay: '200ms' }}>
               <img
@@ -200,14 +200,14 @@ const ModularKitchens = () => {
       </section>
 
       {/* Features */}
-      <section className="section-padding bg-black" ref={featuresRef}>
+      <section className="section-padding bg-white" ref={featuresRef}>
         <div className="container-custom">
           <div className={cn(
             "text-center max-w-2xl mx-auto mb-20 transition-all duration-1000",
             featuresVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           )}>
             <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">What We Offer</p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-background">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-black">
               Why Choose Us
             </h2>
             <div className={cn(
@@ -227,7 +227,7 @@ const ModularKitchens = () => {
                 style={{ transitionDelay: `${(index + 1) * 80}ms` }}
               >
                 <div className="w-3 h-3 bg-gold rounded-full shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-background/80 text-lg group-hover:text-background transition-colors duration-300">{feature}</span>
+                <span className="text-black text-lg group-hover:text-black transition-colors duration-300">{feature}</span>
               </div>
             ))}
           </div>

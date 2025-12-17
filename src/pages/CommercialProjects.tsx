@@ -22,6 +22,13 @@ const commercialProjects = [
         image: project3,
         description: 'A sophisticated urban retreat with panoramic views and premium finishes.',
     },
+    {
+        title: 'Urban Office Space',
+        client: 'Tech Solutions Inc.',
+        location: 'Hinjewadi, Pune',
+        image: project2, // Placeholder image reused
+        description: 'Modern open-plan office designed for collaboration and productivity.',
+    },
 ];
 
 const CommercialProjects = () => {
@@ -93,7 +100,7 @@ const CommercialProjects = () => {
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
                                 <div className={cn(
-                                    "aspect-[16/12] img-scale-reveal mb-8",
+                                    "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
                                     isVisible && "is-visible"
                                 )}>
                                     <img

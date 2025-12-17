@@ -148,8 +148,14 @@ export default function Careers() {
                     <p className="text-muted-foreground mb-8">
                         Shortlisted candidates will be contacted by our HR team for the next steps.
                     </p>
-                    <Button variant="outline" className="px-10">
-                        Contact HR
+                    <Button variant="outline" className="px-10" asChild>
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=careers@bauhauspaces.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Contact HR
+                        </a>
                     </Button>
                 </div>
             </section>

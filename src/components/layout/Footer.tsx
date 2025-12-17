@@ -46,7 +46,7 @@ export function Footer() {
                 <Instagram className="w-4 h-4" />
               </a>
               <a
-                href="https://www.youtube.com/@bauhauspaces"
+                href="https://www.youtube.com/@bauhausspaces"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border border-background/20 flex items-center justify-center hover:bg-background hover:text-charcoal transition-all duration-300"
@@ -137,7 +137,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@bauhauspaces.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@bauhauspaces.com"
                   className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300"
                 >
                   <Mail className="w-5 h-5 text-gold shrink-0" />

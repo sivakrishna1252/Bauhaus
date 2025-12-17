@@ -131,16 +131,19 @@ const Contact = () => {
             title: 'Make a Call',
             desc: 'For general enquiries',
             value: '+91 808 5010 847',
+            href: 'tel:+918085010847'
           }, {
             icon: <Mail className="w-8 h-8" />,
             title: 'Send a Mail',
             desc: 'For general enquiries',
             value: 'info@bauhauspaces.com',
+            href: 'https://mail.google.com/mail/?view=cm&fs=1&to=sivatools1252@gmail.com'
           }, {
             icon: <Headset className="w-8 h-8" />,
             title: 'Support',
             desc: 'Existing clients',
-            value: '1800-123-4567',
+            value: '+91 9966 952 864',
+            href: 'tel:+919966952864'
           }].map((item, i) => (
             <motion.div
               key={i}
@@ -153,7 +156,13 @@ const Contact = () => {
               <div className="mb-4 flex justify-center">{item.icon}</div>
               <h3 className="font-serif text-xl mb-2">{item.title}</h3>
               <p className="text-muted-foreground text-sm mb-3">{item.desc}</p>
-              <p className="font-medium">{item.value}</p>
+              {item.href ? (
+                <a href={item.href} className="font-medium hover:text-gold transition-colors block">
+                  {item.value}
+                </a>
+              ) : (
+                <p className="font-medium">{item.value}</p>
+              )}
             </motion.div>
           ))}
         </div>

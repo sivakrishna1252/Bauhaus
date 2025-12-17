@@ -8,20 +8,20 @@ import bedroomImage from '@/assets/bedroom-service.jpg';
 
 const services = [
   {
-    title: 'Modular Kitchens',
+    title: 'Turnkey Solutions',
     description: 'Custom-designed kitchens with premium materials and smart storage solutions.',
     image: kitchenImage,
     href: '/modular-kitchens',
   },
   {
-    title: 'Bathroom Design',
-    description: 'Transform your bathroom into a luxurious spa-like retreat.',
+    title: 'Design Consultation',
+    description: 'Transform your bathroom into a luxurious spa-like retreat with our consultation services for your dream space.',
     image: bathroomImage,
     href: '/bathrooms',
   },
   {
-    title: 'Complete Interiors',
-    description: 'End-to-end turnkey solutions for your entire home transformation.',
+    title: 'Renovation',
+    description: 'End-to-end turnkey solutions for your entire home transformation and renovation for your dream space.',
     image: bedroomImage,
     href: '/portfolio',
   },
@@ -59,7 +59,7 @@ export function ServicesSection() {
               key={service.title}
               to={service.href}
               className={cn(
-                "group relative bg-card card-hover transition-all duration-700",
+                "group relative bg-card card-hover transition-all duration-700 rounded-2xl overflow-hidden",
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               )}
               style={{ transitionDelay: `${(index + 1) * 150}ms` }}

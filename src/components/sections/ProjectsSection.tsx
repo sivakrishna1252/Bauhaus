@@ -1,35 +1,147 @@
+import { useEffect, useState, useRef } from 'react';
+import { motion, useSpring, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
 
+// Duplicated data to simulate more projects for the slider
 const projects = [
   {
     title: 'Modern Family Residence',
     client: 'Mr. Somesh & Priyanka',
     location: 'Koregaon Park, Pune',
     image: project1,
+    category: 'Residential'
   },
   {
     title: 'Contemporary Villa',
     client: 'Mr. Prashant & Mrs. Vatika',
     location: 'Kalyani Nagar, Pune',
     image: project2,
+    category: 'Commercial'
   },
   {
     title: 'Luxury Penthouse',
     client: 'Mr. Upendra',
     location: 'Viman Nagar, Pune',
     image: project3,
+    category: 'Commercial'
   },
+  {
+    title: 'Serene Apartment',
+    client: 'Rahul & Nisha',
+    location: 'Baner, Pune',
+    image: project1, // Placeholder image
+    category: 'Residential'
+  },
+  {
+    title: 'Urban Office Space',
+    client: 'Tech Solutions Inc.',
+    location: 'Hinjewadi, Pune',
+    image: project2, // Placeholder image
+    category: 'Commercial'
+  },
+  {
+    title: 'Minimalist Studio',
+    client: 'Ms. Ananya',
+    location: 'Aundh, Pune',
+    image: project3, // Placeholder image
+    category: 'Residential'
+  }
 ];
+
+const statsCodes = [
+  { value: 200, suffix: '+', label: 'Projects Completed' },
+  { value: 10, suffix: '+', label: 'Years Experience' },
+  { value: 100, suffix: '%', label: 'Client Satisfaction' },
+  { value: 10, suffix: '', label: 'Years Warranty' },
+];
+
+function Counter({ value, suffix, className }: { value: number; suffix: string; className?: string }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-10px" });
+  const spring = useSpring(0, { mass: 0.8, stiffness: 75, damping: 15 });
+  const display = useTransform(spring, (current) => Math.round(current));
+
+  useEffect(() => {
+    if (isInView) {
+      spring.set(value);
+    }
+  }, [isInView, spring, value]);
+
+  return (
+    <span ref={ref} className={className}>
+      <motion.span>{display}</motion.span>
+      {suffix}
+    </span>
+  );
+}
 
 export function ProjectsSection() {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  // Autoplay functionality
+  useEffect(() => {
+    if (!api) return;
+
+    let intervalId: NodeJS.Timeout;
+
+    const startAutoplay = () => {
+      intervalId = setInterval(() => {
+        api.scrollNext();
+      }, 4000); // Slide every 4 seconds
+    };
+
+    const stopAutoplay = () => {
+      clearInterval(intervalId);
+    };
+
+    startAutoplay(); // Start autoplay on mount
+
+    // Pause on hover
+    const carouselElement = api.rootNode();
+    if (carouselElement) {
+      carouselElement.addEventListener('mouseenter', stopAutoplay);
+      carouselElement.addEventListener('mouseleave', startAutoplay);
+    }
+
+    return () => {
+      stopAutoplay(); // Clear interval on unmount
+      if (carouselElement) {
+        carouselElement.removeEventListener('mouseenter', stopAutoplay);
+        carouselElement.removeEventListener('mouseleave', startAutoplay);
+      }
+    };
+  }, [api]);
 
   return (
     <section className="section-padding bg-background" ref={ref}>
@@ -49,71 +161,99 @@ export function ProjectsSection() {
           )} style={{ transitionDelay: '200ms' }} />
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 mb-16">
-          {/* Featured Large Project */}
-          <Link
-            to="/portfolio"
-            className={cn(
-              "group relative lg:row-span-2 card-hover transition-all duration-700",
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-            )}
-            style={{ transitionDelay: '150ms' }}
+        {/* Projects Carousel */}
+        <div className={cn(
+          "transition-all duration-1000 delay-300",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        )}>
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
           >
-            <div className={cn(
-              "aspect-[4/5] lg:aspect-auto lg:h-full img-scale-reveal",
-              isVisible && "is-visible"
-            )}>
-              <img
-                src={projects[0].image}
-                alt={projects[0].title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-              <p className="text-gold-light text-sm tracking-widest uppercase mb-3">{projects[0].location}</p>
-              <h3 className="font-serif text-2xl lg:text-4xl text-background mb-3 group-hover:translate-x-2 transition-transform duration-500">{projects[0].title}</h3>
-              <p className="text-background/70">{projects[0].client}</p>
-            </div>
-          </Link>
+            <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8">
+              {projects.map((project, index) => (
+                <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-1/2 lg:basis-1/3">
+                  <Link
+                    to="/portfolio"
+                    className="group relative block aspect-[4/5] overflow-hidden card-hover rounded-2xl"
+                  >
+                    <div className="w-full h-full img-scale-reveal is-visible">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-100" />
 
-          {/* Smaller Projects */}
-          {projects.slice(1).map((project, index) => (
-            <Link
-              key={project.title}
-              to="/portfolio"
+                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                      <p className="text-gold-light text-xs tracking-widest uppercase mb-2">{project.category} • {project.location}</p>
+                      <h3 className="font-serif text-xl lg:text-2xl text-background mb-2">{project.title}</h3>
+                      <p className="text-background/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.client}</p>
+                    </div>
+                  </Link>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            {/* Controls: Dots and Arrows */}
+            <div className="flex flex-col items-center justify-center mt-12 gap-6">
+              {/* Pagination Dots */}
+              <div className="flex gap-2">
+                {Array.from({ length: count }).map((_, index) => (
+                  <button
+                    key={index}
+                    className={cn(
+                      "h-2 rounded-full transition-all duration-300",
+                      current === index + 1 ? "w-8 bg-gold" : "w-2 bg-gold/30 hover:bg-gold/50"
+                    )}
+                    onClick={() => api?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Arrows (Removed as per user request for Testimonials, but keeping logic here just in case, simplified blank div if unneeded or re-add if needed. User removed them in diff block earlier for ProjectsSection. I will respect that removal.) */}
+              <div className="flex justify-center gap-4">
+                {/* Arrows removed by user previously */}
+              </div>
+            </div>
+          </Carousel>
+        </div>
+
+        {/* Stats Section Moved from Testimonials */}
+        <div className={cn(
+          "grid grid-cols-2 md:grid-cols-4 gap-10 mt-16 transition-all duration-1000",
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        )}
+          style={{ transitionDelay: '600ms' }}
+        >
+          {statsCodes.map((stat, index) => (
+            <div
+              key={stat.label}
               className={cn(
-                "group relative card-hover transition-all duration-700",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                "text-center transition-all duration-700",
+                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
               )}
-              style={{ transitionDelay: `${(index + 2) * 150}ms` }}
+              style={{ transitionDelay: `${700 + index * 100}ms` }}
             >
-              <div className={cn(
-                "aspect-[16/10] img-scale-reveal",
-                isVisible && "is-visible"
-              )}>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                <p className="text-gold-light text-xs tracking-widest uppercase mb-2">{project.location}</p>
-                <h3 className="font-serif text-xl lg:text-2xl text-background mb-2 group-hover:translate-x-2 transition-transform duration-500">{project.title}</h3>
-                <p className="text-background/70 text-sm">{project.client}</p>
-              </div>
-            </Link>
+              <p className="font-serif text-5xl md:text-6xl text-gold mb-3">
+                <Counter value={stat.value} suffix={stat.suffix} />
+              </p>
+              <p className="text-foreground/60 text-sm tracking-wide">{stat.label}</p>
+            </div>
           ))}
         </div>
 
         {/* View All Projects Button */}
         <div className={cn(
-          "text-center transition-all duration-1000",
+          "text-center mt-16 transition-all duration-1000 delay-500",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-        )} style={{ transitionDelay: '600ms' }}>
+        )}>
           <Button variant="elegant-outline" size="lg" asChild>
             <Link to="/portfolio">
               View All Projects

@@ -157,9 +157,9 @@ const BlogPost = () => {
                     <div className="mt-16 pt-10 border-t border-border">
                         <h3 className="font-serif text-2xl mb-6">Share this article</h3>
                         <div className="flex gap-4">
-                            <Button variant="outline" size="sm" className="rounded-full">Twitter</Button>
-                            <Button variant="outline" size="sm" className="rounded-full">Facebook</Button>
-                            <Button variant="outline" size="sm" className="rounded-full">LinkedIn</Button>
+                            <Button variant="outline" size="sm" className="rounded-full" onClick={() => window.open('https://twitter.com/intent/tweet?text=Check out this article on Bauhaus Studio\'s blog!', '_blank')}>Twitter</Button>
+                            <Button variant="outline" size="sm" className="rounded-full" onClick={() => window.open('https://www.facebook.com/sharer/sharer.php?u=https://bauhausstudio.com/blog', '_blank')}>Facebook</Button>
+                            <Button variant="outline" size="sm" className="rounded-full" onClick={() => window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://bauhausstudio.com/blog', '_blank')}>LinkedIn</Button>
                         </div>
                     </div>
                 </div>
