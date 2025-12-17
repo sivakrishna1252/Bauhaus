@@ -17,23 +17,68 @@ import {
 } from "@/components/ui/select";
 
 
+
+
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    phone: '',
-    subject: '',
+    mobile: '',
+    configuration: '',
+    budget: '',
     message: '',
   });
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    // Clear error when user types
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: '' });
+    }
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validate = () => {
+    let newErrors: { [key: string]: string } = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.mobile.trim()) {
+      newErrors.mobile = "Mobile number is required";
+    } else if (!/^\d{10}$/.test(formData.mobile.replace(/\D/g, ''))) {
+      newErrors.mobile = "Please enter a valid 10-digit mobile number";
+    }
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: 'Message Sent!',
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    if (validate()) {
+      // Success
+      setShowSuccessPopup(true);
+      setFormData({ name: '', mobile: '', configuration: '', budget: '', message: '' });
+
+      // Auto-hide popup after 3 seconds
+      setTimeout(() => {
+        setShowSuccessPopup(false);
+      }, 3000);
+    } else {
+      toast({
+        title: "Validation Error",
+        description: "Please check the highlighted fields.",
+        variant: "destructive"
+      });
+    }
   };
 
   const fadeInUp = {
@@ -79,8 +124,7 @@ const Contact = () => {
           className="container-custom max-w-5xl text-center"
         >
           <p className="font-serif text-2xl md:text-3xl lg:text-4xl text-black mb-8">LOCATION</p>
-          <br>
-          </br>
+          <br />
 
           {/* MAP */}
           {/* FULL WIDTH MAP */}
@@ -168,26 +212,68 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form – UNCHANGED */}
-      <section className="py-24 bg-secondary/30">
+      {/* Contact Form with Success Popup */}
+      <section className="py-24 bg-secondary/30 relative">
         <div className="container-custom max-w-5xl">
           <motion.div
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="bg-white p-10 md:p-16 shadow-sm text-center"
+            className="bg-white p-10 md:p-16 shadow-sm text-center relative overflow-hidden"
           >
+            {/* Success Overlay Popup */}
+            {showSuccessPopup && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="absolute inset-0 bg-white/95 z-50 flex flex-col items-center justify-center p-8 backdrop-blur-sm"
+              >
+                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                  <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 className="font-serif text-3xl mb-2 text-foreground">Thank You!</h3>
+                <p className="text-muted-foreground mb-6">Your message has been sent successfully.</p>
+                <Button
+                  onClick={() => setShowSuccessPopup(false)}
+                  className="bg-black text-white hover:bg-zinc-800 rounded-full px-8"
+                >
+                  Send Another Message
+                </Button>
+              </motion.div>
+            )}
+
             <p className="font-cursive text-gold text-2xl mb-2">Drop A Line</p>
             <h2 className="font-serif text-3xl md:text-4xl mb-8">
               SEND YOUR MESSAGE
             </h2>
 
-            <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
-              <Input placeholder="Your Name" />
+            <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6 relative">
+              <div className="text-left">
+                <Input
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your Name *"
+                  className={errors.name ? "border-red-500" : ""}
+                />
+                {errors.name && <p className="text-red-500 text-xs mt-1 ml-1">{errors.name}</p>}
+              </div>
 
-              <Input placeholder="Mobile Number" />
-              <Select>
+              <div className="text-left">
+                <Input
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Mobile Number *"
+                  className={errors.mobile ? "border-red-500" : ""}
+                />
+                {errors.mobile && <p className="text-red-500 text-xs mt-1 ml-1">{errors.mobile}</p>}
+              </div>
+
+              <Select onValueChange={(val) => handleSelectChange('configuration', val)} value={formData.configuration}>
                 <SelectTrigger className="h-12">
                   <SelectValue placeholder="Configuration of Property ?" />
                 </SelectTrigger>
@@ -200,22 +286,30 @@ const Contact = () => {
                 </SelectContent>
               </Select>
 
-              <Select>
+              <Select onValueChange={(val) => handleSelectChange('budget', val)} value={formData.budget}>
                 <SelectTrigger className="h-12">
                   <SelectValue placeholder="Budget ?" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1bhk">10 -12 L</SelectItem>
-                  <SelectItem value="2bhk">12 -15 L</SelectItem>
-                  <SelectItem value="3bhk">15 -20 L</SelectItem>
-                  <SelectItem value="4bhk">20 -25 L</SelectItem>
-                  <SelectItem value="commercial">25 -30 L</SelectItem>
+                  <SelectItem value="10-12L">10 -12 L</SelectItem>
+                  <SelectItem value="12-15L">12 -15 L</SelectItem>
+                  <SelectItem value="15-20L">15 -20 L</SelectItem>
+                  <SelectItem value="20-25L">20 -25 L</SelectItem>
+                  <SelectItem value="25-30L">25 -30 L</SelectItem>
                 </SelectContent>
               </Select>
-              <Textarea
-                placeholder="Message..."
-                className="md:col-span-2 resize-none"
-              />
+
+              <div className="md:col-span-2 text-left">
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Message... *"
+                  className={`md:col-span-2 resize-none ${errors.message ? "border-red-500" : ""}`}
+                />
+                {errors.message && <p className="text-red-500 text-xs mt-1 ml-1">{errors.message}</p>}
+              </div>
+
               <div className="md:col-span-2">
                 <Button className="bg-black text-white rounded-full px-10 py-6 text-xs tracking-widest uppercase">
                   Send Message
