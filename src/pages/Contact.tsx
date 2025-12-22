@@ -61,17 +61,49 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validate()) {
-      // Success
-      setShowSuccessPopup(true);
-      setFormData({ name: '', mobile: '', configuration: '', budget: '', message: '' });
+      try {
+        const response = await fetch('http://localhost:8000/api/contacts/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            phone: formData.mobile,
+            configuration: formData.configuration,
+            budget: formData.budget,
+            message: formData.message,
+          }),
+        });
 
-      // Auto-hide popup after 3 seconds
-      setTimeout(() => {
-        setShowSuccessPopup(false);
-      }, 3000);
+        if (response.ok) {
+          // Success
+          setShowSuccessPopup(true);
+          setFormData({ name: '', mobile: '', configuration: '', budget: '', message: '' });
+
+          // Auto-hide popup after 3 seconds
+          setTimeout(() => {
+            setShowSuccessPopup(false);
+          }, 3000);
+        } else {
+          const errorData = await response.json();
+          toast({
+            title: "Submission Error",
+            description: errorData.message || "Failed to send message. Please try again.",
+            variant: "destructive"
+          });
+        }
+      } catch (error) {
+        console.error("Submission error:", error);
+        toast({
+          title: "Connection Error",
+          description: "Could not connect to the server. Please check your internet.",
+          variant: "destructive"
+        });
+      }
     } else {
       toast({
         title: "Validation Error",
