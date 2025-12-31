@@ -65,7 +65,7 @@ export function Footer() {
             style={{ transitionDelay: "150ms" }}
           >
             <h4 className="font-serif text-xl text-background mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3" >
               {[
                 { href: '/portfolio', label: 'Our Portfolio' },
                 { href: '/modular-kitchens', label: 'Modular Kitchens' },
@@ -76,7 +76,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-sm text-background/60 hover:text-gold transition-colors duration-300"
+                    className="text-sm text-background/60 hover:text-background transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -122,14 +122,14 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" />
                 <span className="text-sm text-background/60">
-                  C-4, 2nd Floor, Hermes Vishal,<br />
-                  Lane no. 7, Koregaon Park, Pune
+                  <Link to="https://www.google.com/maps/place/C-4+2nd+Floor+Hermes+Vishal,+Lane+no.+7,+Koregaon+Park,+Pune/@18.5196666,73.8666666,17z/data=!3m1!4b1!4m5!3m4!1s0x3bc2b3b3b3b3b3b3:0x3b3b3b3b3b3b3b3b!8m2!3d18.5196666!4d73.8666666" target="_blank" rel="noopener noreferrer" className="text-sm text-background/60 hover:text-background transition-colors duration-300">C-4, 2nd Floor, Hermes Vishal,<br />
+                    Lane no. 7, Koregaon Park, Pune</Link>
                 </span>
               </li>
               <li>
                 <a
                   href="tel:+918085010847"
-                  className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300"
+                  className="flex items-center gap-3 text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
                   <Phone className="w-5 h-5 text-gold shrink-0" />
                   +91 808 5010 847
@@ -138,7 +138,7 @@ export function Footer() {
               <li>
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=info@bauhauspaces.com"
-                  className="flex items-center gap-3 text-sm text-background/60 hover:text-gold transition-colors duration-300"
+                  className="flex items-center gap-3 text-sm text-background/60 hover:text-background transition-colors duration-300"
                 >
                   <Mail className="w-5 h-5 text-gold shrink-0" />
                   info@bauhauspaces.com
@@ -158,7 +158,7 @@ export function Footer() {
         )}
         style={{ transitionDelay: "600ms" }}
       >
-        <div className="container-custom py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="container-custom py-6 pb-24 md:pb-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-background/40">
             © {new Date().getFullYear()} BauHaus Spaces. All rights reserved.
           </p>

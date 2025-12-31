@@ -3,20 +3,21 @@ import { useState } from 'react';
 
 const homeFaqs = [
     {
-        question: 'How do I get started with BauHaus Spaces?',
+        question: 'Do you provide turnkey interior services in Pune?',
         answer:
-            'You can start by booking a free consultation. Our designer will understand your requirements and guide you through the entire process.',
+            'Yes, we offer complete turnkey interior solutions from design to execution. ',
     },
     {
-        question: 'How long does a complete home interior take?',
+        question: 'What types of projects do you handle? ',
         answer:
-            'Typically, a 2BHK takes 45–60 days and a 3BHK can take up to 90 days, depending on the scope of work.',
+            'We design residential, commercial, and mixed-use interior spaces. ',
     },
     {
-        question: 'Do you provide turnkey interior solutions?',
+        question: 'How do I start a project with Bauhaus-Spaces?',
         answer:
-            'Yes, we provide end-to-end turnkey interior solutions including design, execution, and project management.',
+            'You can book a consultation through our website or contact us directly.',
     },
+
 ];
 
 export default function HomeFAQ() {

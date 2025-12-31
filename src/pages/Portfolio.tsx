@@ -15,29 +15,50 @@ const projects = [
     client: 'Mr. Somesh & Priyanka',
     location: 'Koregaon Park, Pune',
     image: project1,
-    description: 'A contemporary home featuring open-plan living spaces with warm, neutral tones.',
+    description: 'A contemporary residential interior in Koregaon Park, Pune, featuring open-plan living spaces, warm neutral tones, and a functional layout designed for modern family living. This home blends style and comfort, creating a personalized sanctuary that reflects the client’s taste while maximizing space and natural light.',
   },
   {
     title: 'Contemporary Villa',
     client: 'Mr. Prashant & Mrs. Vatika',
     location: 'Kalyani Nagar, Pune',
     image: project2,
-    description: 'Elegant interiors that blend modern design with traditional comfort.',
+    description: 'A contemporary residential villa interior in Kalyani Nagar, Pune, designed to seamlessly blend modern aesthetics with traditional comfort. The space features elegant layouts, premium finishes, and thoughtfully curated design details, creating a luxurious yet functional environment tailored to the client’s lifestyle.',
   },
   {
     title: 'Luxury Penthouse',
     client: 'Mr. Upendra',
     location: 'Viman Nagar, Pune',
     image: project3,
-    description: 'A sophisticated urban retreat with panoramic views and premium finishes.',
+    description: 'A luxury penthouse interior in Viman Nagar, Pune, designed as a sophisticated urban retreat. The space features panoramic city views, premium finishes, and contemporary design elements, creating a refined and functional living experience tailored to modern lifestyles.',
   },
   {
     title: 'Serene Apartment',
     client: 'Rahul & Nisha',
     location: 'Baner, Pune',
     image: heroImage,
-    description: 'Minimalist design focused on creating calm, functional living spaces.',
+    description: 'A minimalist residential interior in Baner, Pune, designed to create calm, functional, and uncluttered living spaces. This apartment combines clean lines, neutral tones, and thoughtful layouts, offering a serene sanctuary that reflects the client’s lifestyle while maximizing comfort and practicality.',
   },
+  {
+    title: 'Urban Office Space',
+    client: 'Tech Solutions Inc.',
+    location: 'Hinjewadi, Pune',
+    image: project2,
+    description: 'A modern commercial interior in Hinjewadi, Pune, designed as an open-plan office that fosters collaboration and productivity. The workspace combines functional layouts, contemporary design elements, and premium finishes, creating a professional and inspiring environment tailored to the client’s business needs.',
+  },
+  {
+    title: 'Minimalist Studio',
+    client: 'Ms. Ananya',
+    location: 'Aundh, Pune',
+    image: project3,
+    description: 'A compact studio apartment in Aundh, Pune, designed with a focus on smart usage of space. The interior features multi-functional furniture, a light color palette, and clever storage solutions, creating a spacious and airy feel within a limited footprint.',
+  },
+  {
+    title: 'Taiken The Pan Asian',
+    client: 'Taiken',
+    location: 'Kharadi, Pune',
+    image: project1,
+    description: 'A bold and atmospheric interior design for a Pan Asian restaurant in Kharadi, Pune. The space blends traditional Asian aesthetics with modern industrial elements, creating an immersive dining experience. Features include warm lighting, textured walls, and bespoke seating arrangements.',
+  }
 ];
 
 const Portfolio = () => {
@@ -89,8 +110,7 @@ const Portfolio = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-background/80 text-lg leading-relaxed"
             >
-              Every great design begins with a great story. Explore our collection of
-              thoughtfully designed homes and spaces.
+              Explore our portfolio — luxury interiors in Pune that seamlessly blend beauty with functionality.
             </motion.p>
           </div>
         </div>

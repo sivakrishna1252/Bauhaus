@@ -9,25 +9,18 @@ import project3 from '@/assets/project-3.jpg';
 
 const commercialProjects = [
     {
-        title: 'Contemporary Villa',
-        client: 'Mr. Prashant & Mrs. Vatika',
-        location: 'Kalyani Nagar, Pune',
-        image: project2,
-        description: 'Elegant interiors that blend modern design with traditional comfort.',
-    },
-    {
-        title: 'Luxury Penthouse',
-        client: 'Mr. Upendra',
-        location: 'Viman Nagar, Pune',
-        image: project3,
-        description: 'A sophisticated urban retreat with panoramic views and premium finishes.',
-    },
-    {
         title: 'Urban Office Space',
         client: 'Tech Solutions Inc.',
         location: 'Hinjewadi, Pune',
-        image: project2, // Placeholder image reused
-        description: 'Modern open-plan office designed for collaboration and productivity.',
+        image: project2,
+        description: 'A modern commercial interior in Hinjewadi, Pune, designed as an open-plan office that fosters collaboration and productivity. The workspace combines functional layouts, contemporary design elements, and premium finishes, creating a professional and inspiring environment tailored to the client’s business needs.',
+    },
+    {
+        title: 'Taiken The Pan Asian',
+        client: 'Taiken',
+        location: 'Kharadi, Pune',
+        image: project3, // Choosing project3 for variety if needed or keep consistent
+        description: 'A bold and atmospheric interior design for a Pan Asian restaurant in Kharadi, Pune. The space blends traditional Asian aesthetics with modern industrial elements, creating an immersive dining experience. Features include warm lighting, textured walls, and bespoke seating arrangements.',
     },
 ];
 
@@ -80,7 +73,7 @@ const CommercialProjects = () => {
                             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                             className="text-background/80 text-lg leading-relaxed"
                         >
-                            Designing functional and inspiring commercial spaces that elevate business potential.
+                            Elevate your business with a modern, functional, and inspiring commercial interior from Bauhaus Spaces Pune.
                         </motion.p>
                     </div>
                 </div>

@@ -165,13 +165,13 @@ const Contact = () => {
               className="w-full h-[600px] overflow-hidden cursor-pointer"
               onClick={() =>
                 window.open(
-                  'https://www.google.com/maps/search/?api=1&query=Hermes+Vishal+Koregaon+Park+Pune',
+                  'https://www.google.com/maps/search/?api=1&query=Fortuna+Complex+Shivar+Chowk+Pimple+Saudagar+Pune',
                   '_blank'
                 )
               }
             >
               <iframe
-                src="https://www.google.com/maps?q=Hermes%20Vishal%20Koregaon%20Park%20Pune&output=embed"
+                src="https://www.google.com/maps?q=Fortuna%20Complex%20Shivar%20Chowk%20Pimple%20Saudagar%20Pune&output=embed"
                 className="w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -182,14 +182,14 @@ const Contact = () => {
 
           {/* ADDRESS */}
           <p className="max-w-3xl mx-auto font-medium text-lg md:text-xl text-foreground leading-snug mb-8">
-            C-4, 2nd Floor, Hermes Vishal, Lane No. 7, Koregaon Park, Pune <span className="whitespace-nowrap">411001</span>
+            Office No 203, 2nd Floor, Fortuna Complex, Opposite McDonald's, Above PNB Bank, Shivar Chowk, Pimple Saudagar, Pune - 411027
           </p>
 
           <Button
             className="bg-black text-white hover:bg-zinc-800 rounded-full px-10 py-6 text-xs tracking-widest uppercase"
             onClick={() =>
               window.open(
-                'https://www.google.com/maps/search/?api=1&query=Hermes+Vishal+Koregaon+Park+Pune',
+                'https://www.google.com/maps/search/?api=1&query=Fortuna+Complex+Shivar+Chowk+Pimple+Saudagar+Pune',
                 '_blank'
               )
             }
@@ -206,8 +206,8 @@ const Contact = () => {
             icon: <Phone className="w-8 h-8" />,
             title: 'Make a Call',
             desc: 'For general enquiries',
-            value: '+91 808 5010 847',
-            href: 'tel:+918085010847'
+            value: '+91 7507353999',
+            href: 'tel:+917507353999'
           }, {
             icon: <Mail className="w-8 h-8" />,
             title: 'Send a Mail',

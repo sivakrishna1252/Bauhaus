@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import project1 from '@/assets/project-1.jpg';
+import project2 from '@/assets/project-2.jpg';
+import project3 from '@/assets/project-3.jpg';
 import heroImage from '@/assets/hero-living-room.jpg';
 
 const residentialProjects = [
@@ -13,21 +15,35 @@ const residentialProjects = [
         client: 'Mr. Somesh & Priyanka',
         location: 'Koregaon Park, Pune',
         image: project1,
-        description: 'A contemporary home featuring open-plan living spaces with warm, neutral tones.',
+        description: 'A contemporary residential interior in Koregaon Park, Pune, featuring open-plan living spaces, warm neutral tones, and a functional layout designed for modern family living. This home blends style and comfort, creating a personalized sanctuary that reflects the client’s taste while maximizing space and natural light.',
+    },
+    {
+        title: 'Contemporary Villa',
+        client: 'Mr. Prashant & Mrs. Vatika',
+        location: 'Kalyani Nagar, Pune',
+        image: project2, // Reusing appropriate image
+        description: 'A contemporary residential villa interior in Kalyani Nagar, Pune, designed to seamlessly blend modern aesthetics with traditional comfort. The space features elegant layouts, premium finishes, and thoughtfully curated design details, creating a luxurious yet functional environment tailored to the client’s lifestyle.',
+    },
+    {
+        title: 'Luxury Penthouse',
+        client: 'Mr. Upendra',
+        location: 'Viman Nagar, Pune',
+        image: project3, // Reusing appropriate image
+        description: 'A luxury penthouse interior in Viman Nagar, Pune, designed as a sophisticated urban retreat. The space features panoramic city views, premium finishes, and contemporary design elements, creating a refined and functional living experience tailored to modern lifestyles.',
     },
     {
         title: 'Serene Apartment',
         client: 'Rahul & Nisha',
         location: 'Baner, Pune',
         image: heroImage,
-        description: 'Minimalist design focused on creating calm, functional living spaces.',
+        description: 'A minimalist residential interior in Baner, Pune, designed to create calm, functional, and uncluttered living spaces. This apartment combines clean lines, neutral tones, and thoughtful layouts, offering a serene sanctuary that reflects the client’s lifestyle while maximizing comfort and practicality.',
     },
     {
         title: 'Minimalist Studio',
         client: 'Ms. Ananya',
         location: 'Aundh, Pune',
-        image: project1, // Placeholder image reused
-        description: 'A compact yet luxurious studio apartment making efficient use of every square foot.',
+        image: project1, // Reusing appropriate image
+        description: 'A compact studio apartment in Aundh, Pune, designed with a focus on smart usage of space. The interior features multi-functional furniture, a light color palette, and clever storage solutions, creating a spacious and airy feel within a limited footprint.',
     },
 ];
 

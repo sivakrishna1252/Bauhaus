@@ -84,31 +84,34 @@ export function ProcessSection() {
                 <div
                   key={step.number}
                   className={cn(
-                    "flex gap-6 transition-all duration-500",
+                    "flex gap-8 group transition-all duration-500",
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
                   )}
                   style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                 >
-                  <span className="text-black font-serif text-2xl shrink-0 w-12">
+                  <span className="text-black font-serif text-3xl font-bold shrink-0 w-12">
                     {step.number}
                   </span>
                   <div>
-                    <h4 className="font-serif text-xl text-black mb-1">
+                    <h4 className="font-serif text-2xl text-foreground font-bold mb-2">
                       {step.title}
                     </h4>
-                    <p className="text-black text-sm leading-relaxed">
+                    <p className="text-foreground text-base leading-relaxed max-w-lg">
                       {step.description}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-
-            <Button variant="elegant" size="lg" asChild>
-              <Link to="/how-it-works">Learn More</Link>
-            </Button>
           </div>
 
+        </div>
+
+        {/* Centered Button */}
+        <div className="mt-16 flex justify-center">
+          <Button variant="elegant" size="lg" asChild className="px-10">
+            <Link to="/how-it-works">Learn More</Link>
+          </Button>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ export interface BlogPost {
     title: string;
     slug: string;
     excerpt: string;
+    content?: string;
     created_at: string;
     featured_image: string | null;
     author: string;
@@ -19,31 +20,66 @@ export interface BlogPost {
 
 export const MOCK_BLOGS: BlogPost[] = [
     {
-        id: 'exploring-top-5-interior-styles-2024',
-        slug: 'exploring-top-5-interior-styles-2024',
-        title: 'Exploring the Top 5 Interior Styles of 2024 to Elevate Your Home Decor',
-        excerpt: "Are you ready to elevate your home decor game in 2024? Stay ahead of the curve and dive into the top 5 interior styles that are set to dominate the design world.",
-        created_at: '2024-10-01T00:00:00Z',
+        id: '5-trends-shaping-interior-design-pune-2024',
+        slug: '5-trends-shaping-interior-design-pune-2024',
+        title: '5 Trends Shaping Interior Design in Pune 2024',
+        excerpt: "From sustainable materials to smart homes, discover the top interior design trends transforming Pune’s residential spaces this year.",
+        content: `
+            <p>Pune's interior design landscape is evolving rapidly, blending modern aesthetics with traditional warmth. Here are the top 5 trends shaping homes in 2024:</p>
+            <h3>1. Biophilic Design</h3>
+            <p>Bringing the outdoors in is more popular than ever. Pune homeowners are opting for indoor plants, natural light maximization, and organic materials like wood and stone to create serene living spaces.</p>
+            <h3>2. Smart Home Integration</h3>
+            <p>Technology meets design. Automated lighting, smart curtains, and voice-controlled appliances are becoming standard in modern Pune apartments, offering convenience without compromising on style.</p>
+            <h3>3. Sustainable Luxury</h3>
+            <p>Eco-friendly materials such as bamboo, reclaimed wood, and low-VOC paints are in high demand. Luxury is now defined by conscious choices that look good and feel good.</p>
+            <h3>4. Multifunctional Spaces</h3>
+            <p>With hybrid work models staying, homes are adapting. Flexible furniture and designated home office nooks that blend seamlessly into living areas are a key trend.</p>
+            <h3>5. Statement Ceilings</h3>
+            <p>Often overlooked, ceilings are getting a makeover with bold colors, wallpapers, or intricate POP designs, adding a new dimension to room aesthetics.</p>
+        `,
+        created_at: '2024-01-15T00:00:00Z',
         featured_image: placeholderImage,
         author: 'Admin',
         isMock: true
     },
     {
-        id: 'how-to-find-professional-interior-designer',
-        slug: 'how-to-find-professional-interior-designer',
-        title: 'How to Find a Professional Interior Designer for Your Renovation',
-        excerpt: "Finding the right interior designer can make or break your renovation project. Here are key tips to ensure you hire a professional who aligns with your vision.",
-        created_at: '2024-09-24T00:00:00Z',
+        id: 'why-modular-kitchens-are-must-have',
+        slug: 'why-modular-kitchens-are-must-have',
+        title: 'Why Modular Kitchens are a Must-Have for Modern Homes',
+        excerpt: "Efficiency meets elegance. Learn why modular kitchens are the preferred choice for homeowners looking for style and functionality.",
+        content: `
+            <p>The kitchen is the heart of the home, and in modern Indian households, functionality is key. Modular kitchens have revolutionized the way we cook and store.</p>
+            <h3>Maximized Storage</h3>
+            <p>Modular kitchens are designed to utilize every inch of space. With smart corner units, tall pantries, and deep drawers, clutter is a thing of the past.</p>
+            <h3>Customization</h3>
+            <p>Whether you prefer an L-shaped, U-shaped, or island layout, modular kitchens can be tailored to fit your specific needs and floor plan perfectly.</p>
+            <h3>Ease of Maintenance</h3>
+            <p>Materials like Acrylic and PU finishes are not only heat and moisture resistant but also incredibly easy to clean, ensuring your kitchen looks new for years.</p>
+            <h3>Aesthetics</h3>
+            <p>With a wide range of colors, textures, and finishes available, a modular kitchen can elevate the entire look of your home, making it a stylish space for culinary creativity.</p>
+        `,
+        created_at: '2024-02-10T00:00:00Z',
         featured_image: placeholderImage,
         author: 'Admin',
         isMock: true
     },
     {
-        id: 'top-5-color-schemes-2024',
-        slug: 'top-5-color-schemes-2024',
-        title: 'The Top 5 Color Schemes You Should Try Out In Your Home To Stay Trendy',
-        excerpt: "Colors define a space. Discover the trending color palettes of 2024 that can transform the mood and aesthetic of your home.",
-        created_at: '2024-09-15T00:00:00Z',
+        id: 'small-space-big-style-tips',
+        slug: 'small-space-big-style-tips',
+        title: 'Small Space, Big Style: Interior Design Tips for Compact Apartments',
+        excerpt: "Limited square footage? No problem. Here are expert tips to make your compact apartment feel spacious and stylish.",
+        content: `
+            <p>Living in a compact apartment doesn't mean compromising on style. With the right design strategies, small spaces can feel airy and luxurious.</p>
+            <h3>1. Light Colors</h3>
+            <p>Soft hues like whites, creams, and pastels reflect light, making rooms appear larger and more open. Use mirrors strategically to enhance this effect.</p>
+            <h3>2. Multi-functional Furniture</h3>
+            <p>Invest in beds with storage, sofa-cum-beds, or extendable dining tables. Furniture that serves dual purposes saves valuable floor space.</p>
+            <h3>3. Vertical Storage</h3>
+            <p>When floor space is limited, look up. Floor-to-ceiling shelves and wall-mounted cabinets draw the eye upward and provide ample storage without crowding the room.</p>
+            <h3>4. Declutter</h3>
+            <p>Minimalism is your best friend. Keep decor simple and functional. sleek lines and organized spaces create a sense of calm and openness.</p>
+        `,
+        created_at: '2024-03-05T00:00:00Z',
         featured_image: placeholderImage,
         author: 'Admin',
         isMock: true
@@ -108,8 +144,16 @@ const Blog = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="font-serif text-5xl md:text-7xl tracking-wide mb-6"
                     >
-                        Design Insights
+                        Insights & Inspiration
                     </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed"
+                    >
+                        Explore the latest trends and expert tips to transform your space.
+                    </motion.p>
                 </div>
             </section>
 

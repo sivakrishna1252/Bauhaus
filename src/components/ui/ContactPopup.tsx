@@ -45,30 +45,22 @@ export function ContactPopup() {
                         className="fixed inset-0 bg-black/60 z-50 backdrop-blur-sm"
                     />
 
-                    {/* Popup Container */}
+                    {/* Popup Container - Using absolute positioning for guaranteed symmetry on mobile */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
-                        animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
-                        exit={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
+                        initial={{ opacity: 0, scale: 0.9, y: "100%" }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: "100%" }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="fixed top-1/2 left-1/2 z-50 w-full max-w-[450px] p-4"
+                        className="fixed left-0 right-0 mx-auto bottom-4 z-[60] w-[92%] max-w-[450px] pointer-events-auto"
                     >
-                        <div className="bg-background border border-border shadow-2xl rounded-2xl overflow-hidden relative">
-                            {/* Close Button */}
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="absolute top-4 right-4 p-2 rounded-full bg-secondary/80 hover:bg-secondary transition-colors z-10"
-                            >
-                                <X className="w-5 h-5 text-muted-foreground" />
-                            </button>
-
-                            <div className="p-6 md:p-8">
-                                <div className="mb-6">
-                                    <p className="text-gold text-xs font-bold tracking-widest uppercase mb-2">Get A Free Quote</p>
-                                    <h3 className="font-serif text-2xl text-foreground leading-tight">Let's Discuss Your Dream Space</h3>
+                        <div className="bg-background border border-border shadow-2xl rounded-2xl overflow-hidden relative max-h-[90vh] flex flex-col w-full">
+                            <div className="overflow-y-auto p-6 md:p-8">
+                                <div className="mb-6 pr-10">
+                                    <p className="text-gold text-[10px] md:text-xs font-bold tracking-widest uppercase mb-1 md:mb-2">Get A Free Quote</p>
+                                    <h3 className="font-serif text-xl md:text-2xl text-foreground leading-tight">Let's Discuss Your Dream Space</h3>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-4">
+                                <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                                     <div>
                                         <Input placeholder="Your Name" required className="bg-secondary/30 border-border/50 text-foreground" />
                                     </div>
@@ -78,8 +70,8 @@ export function ContactPopup() {
                                     <div>
                                         <Textarea placeholder="Tell us about your requirement..." className="bg-secondary/30 border-border/50 resize-none h-24 text-foreground" />
                                     </div>
-                                    <Button type="submit" variant="gold" size="lg" className="w-full rounded-lg">
-                                        Request Call Back
+                                    <Button type="submit" variant="gold" size="lg" className="w-full font-bold tracking-wider py-6">
+                                        REQUEST CALL BACK
                                     </Button>
                                 </form>
 
@@ -87,6 +79,13 @@ export function ContactPopup() {
                                     We respect your privacy. No spam.
                                 </p>
                             </div>
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setIsOpen(false)}
+                                className="absolute top-4 right-4 p-2 rounded-full bg-secondary/80 hover:bg-secondary transition-colors z-20"
+                            >
+                                <X className="w-5 h-5 text-muted-foreground" />
+                            </button>
                         </div>
                     </motion.div>
                 </>

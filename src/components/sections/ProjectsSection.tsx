@@ -31,14 +31,14 @@ const projects = [
     client: 'Mr. Prashant & Mrs. Vatika',
     location: 'Kalyani Nagar, Pune',
     image: project2,
-    category: 'Commercial'
+    category: 'Residential'
   },
   {
     title: 'Luxury Penthouse',
     client: 'Mr. Upendra',
     location: 'Viman Nagar, Pune',
     image: project3,
-    category: 'Commercial'
+    category: 'Residential'
   },
   {
     title: 'Serene Apartment',
@@ -60,14 +60,21 @@ const projects = [
     location: 'Aundh, Pune',
     image: project3, // Placeholder image
     category: 'Residential'
+  },
+  {
+    title: 'Taiken The Pan Asian',
+    client: 'Taiken',
+    location: 'Kharadi, Pune',
+    image: project2, // Placeholder image
+    category: 'Commercial'
   }
 ];
 
 const statsCodes = [
   { value: 200, suffix: '+', label: 'Projects Completed' },
-  { value: 10, suffix: '+', label: 'Years Experience' },
+  { value: 10, suffix: '+', label: 'Years of Experience' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' },
-  { value: 10, suffix: '', label: 'Years Warranty' },
+  { value: 10, suffix: '', label: 'Years Warranty (Upto)' },
 ];
 
 function Counter({ value, suffix, className }: { value: number; suffix: string; className?: string }) {
@@ -151,14 +158,20 @@ export function ProjectsSection() {
           "text-center mb-16 transition-all duration-1000",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         )}>
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Featured Work</p>
+          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Selected Works</p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground">
             Our Projects
           </h2>
           <div className={cn(
-            "w-16 h-px bg-gold mt-6 mx-auto transition-transform duration-1000 origin-center",
+            "w-16 h-px bg-gold mt-6 mb-6 mx-auto transition-transform duration-1000 origin-center",
             isVisible ? "scale-x-100" : "scale-x-0"
           )} style={{ transitionDelay: '200ms' }} />
+          <p className={cn(
+            "text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed transition-all duration-1000 delayed-fade-in",
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )}>
+            Our work spans residential and commercial interiors across Pune. Each project reflects thoughtful design, refined detailing, and a deep understanding of space.
+          </p>
         </div>
 
         {/* Projects Carousel */}
@@ -171,8 +184,9 @@ export function ProjectsSection() {
             opts={{
               align: "start",
               loop: true,
+              duration: 60,
             }}
-            className="w-full"
+            className="w-full relative px-10 md:px-16 lg:px-20"
           >
             <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8">
               {projects.map((project, index) => (
@@ -200,8 +214,16 @@ export function ProjectsSection() {
               ))}
             </CarouselContent>
 
-            {/* Controls: Dots and Arrows */}
-            <div className="flex flex-col items-center justify-center mt-12 gap-6">
+            {/* Navigation Arrows - High Visibility */}
+            <CarouselPrevious
+              className="absolute -left-2 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+            />
+            <CarouselNext
+              className="absolute -right-2 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+            />
+
+            {/* Controls: Dots */}
+            <div className="flex flex-col items-center justify-center mt-12 gap-6 relative">
               {/* Pagination Dots */}
               <div className="flex gap-2">
                 {Array.from({ length: count }).map((_, index) => (
@@ -215,11 +237,6 @@ export function ProjectsSection() {
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
-              </div>
-
-              {/* Arrows (Removed as per user request for Testimonials, but keeping logic here just in case, simplified blank div if unneeded or re-add if needed. User removed them in diff block earlier for ProjectsSection. I will respect that removal.) */}
-              <div className="flex justify-center gap-4">
-                {/* Arrows removed by user previously */}
               </div>
             </div>
           </Carousel>
@@ -262,6 +279,6 @@ export function ProjectsSection() {
           </Button>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

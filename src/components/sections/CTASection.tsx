@@ -28,7 +28,7 @@ export function CTASection() {
           )}
           style={{ transitionDelay: "100ms" }}
         >
-          Start Your Journey
+          Let’s Design Your Space
         </p>
 
         {/* Heading */}
@@ -60,8 +60,7 @@ export function CTASection() {
           )}
           style={{ transitionDelay: "400ms" }}
         >
-          Book a free consultation with our designers and take the first step
-          towards your dream home.
+          Whether you’re building a new home or transforming an existing one, Bauhaus-Spaces is here to bring your vision to life.
         </p>
 
         {/* Actions */}
@@ -74,7 +73,7 @@ export function CTASection() {
         >
           <Button variant="elegant" size="xl" asChild>
             <Link to="/contact">
-              Book Free Consultation
+              Schedule a Consultation
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>

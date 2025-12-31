@@ -11,24 +11,30 @@ import heroImage3 from '@/assets/bedroom-service.jpg';
 const slides = [
   {
     image: heroImage1,
-    subtitle: "Premium Interior Design Studio",
-    title: "Transform Your Space Into Something",
-    highlight: "Extraordinary",
-    description: "End-to-end interior solutions with 10-year warranty. From concept to completion, we bring your dream home to life."
+    subtitle: "Luxury Interior Design Studio in Pune",
+    title: "Designing modern, functional, and timeless spaces tailored to your lifestyle.",
+    highlight: "",
+    description: "Designing modern, functional, and timeless spaces tailored to your lifestyle.",
+    ctaPrimary: { text: "Book a Consultation", link: "/contact" },
+    ctaSecondary: { text: "View Our Work", link: "/portfolio" }
   },
   {
     image: heroImage2,
-    subtitle: "Modern Modular Kitchens",
-    title: "Culinary Havens Crafted For Your",
-    highlight: "Lifestyle",
-    description: "Experience the perfect blend of functionality and aesthetics with our custom-designed modular kitchens."
+    subtitle: "Modern interior design inspired by clarity, function, and timeless elegance.",
+    title: "Design That Works. Spaces That Last.",
+    highlight: "",
+    description: "At Bauhaus-Spaces, we create interiors where form follows function. Every space is thoughtfully planned, expertly executed, and designed to remain relevant beyond trends.",
+    ctaPrimary: { text: "Book a Consultation", link: "/contact" },
+    ctaSecondary: { text: "Explore Our Work", link: "/portfolio" }
   },
   {
     image: heroImage3,
-    subtitle: "Luxury Bedroom Design",
-    title: "Sanctuaries of Comfort and",
-    highlight: "Elegance",
-    description: "Create your personal retreat with our bespoke bedroom designs, tailored to your unique style and needs."
+    subtitle: "Sanctuaries of Comfort and Elegance",
+    title: "Minimalistic Bedroom Design",
+    highlight: "",
+    description: "Create your personal retreat with bespoke bedroom interiors designed for calm, comfort, and balance. Every detail is thoughtfully crafted to reflect your lifestyle and enhance everyday living.",
+    ctaPrimary: { text: "Book a Consultation", link: "/contact" },
+    ctaSecondary: { text: "View Portfolio", link: "/portfolio" }
   }
 ];
 
@@ -89,13 +95,9 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 40, filter: 'blur(4px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white leading-[1.05] mb-8"
+                className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.05] mb-8"
               >
-                {/* 
-                #test wii be black change italic text-black */}
-
-                {slides[currentImageIndex].title}{' '}
-                <span className="italic text-gold-light">{slides[currentImageIndex].highlight}</span>
+                {slides[currentImageIndex].title}
               </motion.h1>
 
               {/* Decorative line */}
@@ -104,8 +106,6 @@ export function HeroSection() {
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 className="w-24 h-px bg-gold origin-left mb-8"
-              // className="w-24 h-px bg-black origin-left mb-8"
-
               />
 
               {/* Description */}
@@ -125,16 +125,14 @@ export function HeroSection() {
                 transition={{ duration: 0.8, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <Button variant="elegant-light" size="xl" asChild>
-                  <Link to="/portfolio">
-                    View Portfolio
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
-                </Button>
-                {/* <Button variant="gold" size="xl" asChild> */}
                 <Button variant="default" size="xl" asChild >
-
-                  <Link to="/contact" >Book Consultation</Link>
+                  <Link to={slides[currentImageIndex].ctaPrimary.link} >{slides[currentImageIndex].ctaPrimary.text}</Link>
+                </Button>
+                <Button variant="elegant-light" size="xl" asChild>
+                  <Link to={slides[currentImageIndex].ctaSecondary.link}>
+                    {slides[currentImageIndex].ctaSecondary.text}
+                    {/* <ArrowRight className="w-4 h-4 ml-2" /> */}
+                  </Link>
                 </Button>
               </motion.div>
             </motion.div>

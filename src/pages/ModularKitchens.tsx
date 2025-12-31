@@ -8,34 +8,41 @@ import { motion } from 'framer-motion';
 import kitchenImage from '@/assets/kitchen-service.jpg';
 
 const kitchenTypes = [
-  { name: 'L-Shape Kitchen', description: 'Perfect for corner spaces with efficient workflow.' },
-  { name: 'Island Kitchen', description: 'Adds extra counter space and a social gathering point.' },
-  { name: 'Straight Kitchen', description: 'Ideal for narrow spaces with linear workflow.' },
-  { name: 'U-Shape Kitchen', description: 'Maximum storage and counter space on three walls.' },
+  { name: 'L-Shaped Kitchen', description: 'Efficient corner utilization, ideal for open-plan homes.' },
+  { name: 'U-Shaped Kitchen', description: 'Spacious countertop area with maximum storage.' },
+  { name: 'Parallel / Galley Kitchen', description: 'Professional workflow with separate wet and dry zones.' },
+  { name: 'Island Kitchen', description: 'A luxurious centerpiece perfect for social cooking.' },
+  { name: 'Straight / Linear Kitchen', description: 'Compact, functional design for smaller spaces.' },
 ];
 
 const materials = [
   {
-    name: 'BWP Plywood',
-    description: 'Boiling Water Proof - Durable and termite resistant',
+    name: 'Acrylic',
+    description: 'High-gloss, scratch-resistant finish for a modern look.',
   },
   {
-    name: 'MR Plywood',
-    description: 'Moisture Resistant - Suitable for normal conditions',
+    name: 'PU Finish',
+    description: 'Seamless, premium coating available in matte and gloss.',
   },
   {
-    name: 'HDHMR/MDF',
-    description: 'High Density - Smooth finish for premium look',
+    name: 'Laminates',
+    description: 'Versatile, durable, and cost-effective with endless textures.',
+  },
+  {
+    name: 'Veneer',
+    description: 'Natural wood texture for a warm, timeless appeal.',
+  },
+  {
+    name: 'Glass & Aluminum',
+    description: 'Modern, high-end aesthetics for contemporary kitchens.',
   },
 ];
 
 const features = [
-  '10-Year Warranty',
-  'Jameline Hardware',
-  'Soft-Close Mechanisms',
-  'Premium Finishes',
-  'Customized Designs',
-  'Professional Installation',
+  { name: 'Soft-Close Drawers', description: 'Silent, effortless closing for premium utility.' },
+  { name: 'Corner Solutions', description: 'Magic corners and carousel units for maximum space usage.' },
+  { name: 'Tall Units', description: 'Pantry storage for dry groceries and built-in appliances.' },
+  { name: 'Under-Cabinet Lighting', description: 'Ambiance and functional lighting for workspaces.' },
 ];
 
 const ModularKitchens = () => {
@@ -67,7 +74,7 @@ const ModularKitchens = () => {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="text-gold text-sm tracking-[0.4em] uppercase mb-6"
             >
-              Our Expertise
+              Elevate Your Culinary Experience
             </motion.p>
             <motion.h1
               initial={{ opacity: 0, y: 40, filter: 'blur(4px)' }}
@@ -75,7 +82,7 @@ const ModularKitchens = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="font-serif text-5xl md:text-6xl lg:text-7xl text-background mb-8"
             >
-              Modular Kitchens
+              Heart of the Home – Modular Kitchens
             </motion.h1>
             <motion.div
               initial={{ scaleX: 0 }}
@@ -89,8 +96,7 @@ const ModularKitchens = () => {
               transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="text-background/80 text-lg leading-relaxed mb-10"
             >
-              Elevate your culinary experience with our expertly designed modular kitchens.
-              We combine functionality with aesthetics to create the heart of your home.
+              At Bauhaus-Spaces, we believe the kitchen is more than just a place to cook—it’s where lifestyle meets function. Our modular kitchens are designed for efficiency, durability, and elegance, ensuring a seamless culinary experience.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -124,7 +130,7 @@ const ModularKitchens = () => {
             )} style={{ transitionDelay: '200ms' }} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {kitchenTypes.map((type, index) => (
               <div
                 key={type.name}
@@ -145,12 +151,12 @@ const ModularKitchens = () => {
       {/* Materials */}
       <section className="section-padding bg-secondary" ref={materialsRef}>
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div className={cn(
               "transition-all duration-1000",
               materialsVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
             )}>
-              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Quality Materials</p>
+              <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Premium Finishes</p>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
                 Core Materials
               </h2>
@@ -206,7 +212,7 @@ const ModularKitchens = () => {
             "text-center max-w-2xl mx-auto mb-20 transition-all duration-1000",
             featuresVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           )}>
-            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">What We Offer</p>
+            <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Smart Features</p>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-black">
               Why Choose Us
             </h2>
@@ -216,18 +222,21 @@ const ModularKitchens = () => {
             )} style={{ transitionDelay: '200ms' }} />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {features.map((feature, index) => (
               <div
-                key={feature}
+                key={feature.name}
                 className={cn(
-                  "flex items-center gap-4 group transition-all duration-700",
+                  "flex items-start gap-4 group transition-all duration-700",
                   featuresVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                 )}
                 style={{ transitionDelay: `${(index + 1) * 80}ms` }}
               >
-                <div className="w-3 h-3 bg-gold rounded-full shrink-0 group-hover:scale-125 transition-transform duration-300" />
-                <span className="text-black text-lg group-hover:text-black transition-colors duration-300">{feature}</span>
+                <div className="w-3 h-3 bg-gold rounded-full shrink-0 group-hover:scale-125 transition-transform duration-300 mt-2" />
+                <div>
+                  <h3 className="text-black text-xl font-serif mb-1 group-hover:text-gold transition-colors duration-300">{feature.name}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </div>
               </div>
             ))}
           </div>

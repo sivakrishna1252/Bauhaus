@@ -47,8 +47,11 @@ export function ServicesSection() {
             isVisible ? "scale-x-100" : "scale-x-0"
           )} style={{ transitionDelay: '200ms' }} />
           <p className="text-muted-foreground text-lg leading-relaxed">
-            From modular kitchens to complete home interiors, we bring expertise
-            and attention to detail in every project we undertake.
+            Complete home interiors, we bring design expertise, precision, and
+            attention to detail to every project we undertake. Our approach is
+            thoughtful planning with refined aesthetics to create spaces that's
+            functional, elegant, and built to last. Every interior we design is
+            tailored to the client’s lifestyle, ensuring a seamless.
           </p>
         </div>
 

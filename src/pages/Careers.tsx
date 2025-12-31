@@ -8,17 +8,19 @@ import heroImage from '@/assets/hero-living-room.jpg';
 
 const openings = [
     {
-        role: 'Interior Designer',
+        role: 'Senior Interior Designer',
         type: 'Full Time',
         location: 'Pune',
+        description: '5+ Years experience in luxury residential projects.',
     },
     {
-        role: 'Furniture Designer',
+        role: 'Project Manager',
         type: 'Full Time',
         location: 'Pune',
+        description: 'Civil/Interior Architecture background required.',
     },
     {
-        role: 'Site Supervisor (Interiors)',
+        role: '3D Visualizer',
         type: 'Full Time',
         location: 'Pune',
     },
@@ -54,7 +56,7 @@ export default function Careers() {
                         Careers
                     </p>
                     <h1 className="font-serif text-5xl md:text-6xl text-background">
-                        Begin Your Career With Us
+                        Join Our Vision
                     </h1>
                 </div>
             </section>
@@ -63,9 +65,7 @@ export default function Careers() {
             <section className="py-20 bg-background">
                 <div className="container-custom max-w-3xl text-center">
                     <p className="text-muted-foreground text-lg leading-relaxed">
-                        At BauHaus Spaces, we create meaningful interior experiences through
-                        thoughtful design and quality craftsmanship. Join a team that values
-                        creativity, responsibility, and on-site excellence.
+                        At Bauhaus-Spaces, we don’t just design interiors; we craft experiences. We are looking for passionate, creative, and driven individuals to join our growing team in Pune.
                     </p>
                 </div>
             </section>
@@ -93,6 +93,9 @@ export default function Careers() {
                                     <h3 className="font-medium text-lg">{job.role}</h3>
                                     <p className="text-sm text-muted-foreground">
                                         {job.type} · {job.location}
+                                    </p>
+                                    <p className="text-xs text-muted-foreground mt-1">
+                                        {job.description}
                                     </p>
                                 </div>
 
@@ -128,11 +131,11 @@ export default function Careers() {
                             </p>
                             <p className="flex gap-2 items-center">
                                 <Mail className="w-4 h-4" />
-                                careers@bauhauspaces.com
+                                contact@bauhaus-spaces.com
                             </p>
                             <p className="flex gap-2 items-center">
                                 <Phone className="w-4 h-4" />
-                                +91 808 5010 847
+                                +91 7507353999
                             </p>
                         </div>
                     </div>

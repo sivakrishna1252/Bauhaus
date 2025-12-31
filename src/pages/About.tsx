@@ -6,6 +6,8 @@ import {
     CarouselApi,
     CarouselContent,
     CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
 } from '@/components/ui/carousel';
 import { CircleDollarSign, TrendingUp, Users, Linkedin, Twitter, Instagram } from 'lucide-react';
 import heroImage from '@/assets/hero-living-room.jpg';
@@ -47,11 +49,34 @@ const About = () => {
     useEffect(() => {
         if (!api) return;
 
-        const intervalId = setInterval(() => {
-            api.scrollNext();
-        }, 4000); // Scroll every 4 seconds
+        let intervalId: NodeJS.Timeout;
 
-        return () => clearInterval(intervalId);
+        const startAutoplay = () => {
+            intervalId = setInterval(() => {
+                api.scrollNext();
+            }, 4000); // Scroll every 4 seconds
+        };
+
+        const stopAutoplay = () => {
+            clearInterval(intervalId);
+        };
+
+        startAutoplay();
+
+        // Pause on hover
+        const carouselElement = api.rootNode();
+        if (carouselElement) {
+            carouselElement.addEventListener('mouseenter', stopAutoplay);
+            carouselElement.addEventListener('mouseleave', startAutoplay);
+        }
+
+        return () => {
+            stopAutoplay();
+            if (carouselElement) {
+                carouselElement.removeEventListener('mouseenter', stopAutoplay);
+                carouselElement.removeEventListener('mouseleave', startAutoplay);
+            }
+        };
     }, [api]);
 
     return (
@@ -88,7 +113,7 @@ const About = () => {
                             transition={{ duration: 0.8, delay: 0.1 }}
                             className="font-serif text-5xl md:text-6xl lg:text-7xl text-white mb-8"
                         >
-                            About Us
+                            Designing Spaces with Purpose
                         </motion.h1>
 
                         <motion.div
@@ -97,6 +122,15 @@ const About = () => {
                             transition={{ duration: 1, delay: 0.3 }}
                             className="w-16 h-px bg-gold origin-left mb-8"
                         />
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="text-white/80 text-lg leading-relaxed mb-8"
+                        >
+                            At Bauhaus-Spaces, we believe interiors should feel intuitive, elegant, and enduring. From modern homes to commercial spaces, our work combines clean aesthetics with practical solutions, tailored to each client’s lifestyle and vision.
+                        </motion.p>
                     </div>
                 </div>
             </section>
@@ -123,8 +157,8 @@ const About = () => {
                             viewport={{ once: true }}
                             variants={fadeInUp}
                         >
-                            <p>
-                                At Bauhaus Spaces, we believe that design is not just about aesthetics but about creating environments that enhance the way you live. Our approach is rooted in the principles of functionality, simplicity, and elegance.
+                            <p style={{ background: "#ffffff", padding: "16px 20px", border: "1px solid #e5e7eb", borderRadius: "8px", lineHeight: "1.9", textAlign: "justify", textJustify: "inter-word", hyphens: "auto" }}>
+                                At Bauhaus Spaces, we redefine interior design in Pune by creating spaces that are functional,  elegant, minimalistic and timeless. Design for us is more than aesthetics — it’s about enhancing how you live, work, and interact with your surroundings projects are extractly from the acceptable.
                             </p>
                         </motion.div>
                         <motion.div
@@ -134,8 +168,8 @@ const About = () => {
                             variants={fadeInUp}
                             transition={{ delay: 0.2 }}
                         >
-                            <p>
-                                We specialize in transforming residential and commercial spaces into personalized sanctuaries. With a keen eye for detail and a passion for innovation, our team ensures every project is a masterpiece of comfort and style.
+                            <p style={{ background: "#ffffff", padding: "16px 20px", border: "1px solid #e5e7eb", borderRadius: "8px", lineHeight: "1.9", textAlign: "justify", textJustify: "inter-word", hyphens: "auto" }}>
+                                We specialize in residential and commercial interiors, transforming homes, offices, and retail spaces into personalized sanctuaries that reflect your style and lifestyle. Every project combines innovative solutions, premium materials, and thoughtful detailing, ensuring a perfect balance of beauty and functionality.
                             </p>
                         </motion.div>
                         <motion.div
@@ -145,8 +179,8 @@ const About = () => {
                             variants={fadeInUp}
                             transition={{ delay: 0.4 }}
                         >
-                            <p>
-                                From concept to execution, we handle everything with precision. Our commitment to quality and client satisfaction drives us to push boundaries and deliver exceptional results that stand the test of time.
+                            <p style={{ background: "#ffffff", padding: "16px 20px", border: "1px solid #e5e7eb", borderRadius: "8px", lineHeight: "1.9", textAlign: "justify", textJustify: "inter-word", hyphens: "auto" }}>
+                                From initial concept to flawless execution, our team manages every stage with precision. With over a decade of experience serving clients across Pune, Baner, Aundh, Kalyani Nagar, Hinjewadi, Koregaon Park, and PCMC, we deliver exceptional interiors that stand the test of time.
                             </p>
                         </motion.div>
                     </div>
@@ -170,7 +204,7 @@ const About = () => {
                             </div>
                             <h3 className="font-serif text-xl mb-3">Best Price Guaranteed</h3>
                             <p className="text-white/60 text-sm leading-relaxed">
-                                We offer transparent pricing and value-driven solutions, ensuring you get the best design for your budget without compromising on quality.
+                                Luxury interiors within your budget — transparent pricing, value-driven solutions, and uncompromised quality across Pune.
                             </p>
                         </motion.div>
 
@@ -187,7 +221,7 @@ const About = () => {
                             </div>
                             <h3 className="font-serif text-xl mb-3">Finance Analysis</h3>
                             <p className="text-white/60 text-sm leading-relaxed">
-                                Our experts assist with detailed cost breakdown and financial planning to keep your renovation project on track and stress-free.
+                                Smart financial planning for interiors — transparent budgets, detailed cost analysis, and stress-free execution across Pune.
                             </p>
                         </motion.div>
 
@@ -204,7 +238,7 @@ const About = () => {
                             </div>
                             <h3 className="font-serif text-xl mb-3">Professional Team</h3>
                             <p className="text-white/60 text-sm leading-relaxed">
-                                Work with a dedicated team of architects, designers, and project managers who are passionate about bringing your vision to life.
+                                Your vision, our expertise — a dedicated team of architects and designers crafting interiors with precision and style across Pune.
                             </p>
                         </motion.div>
                     </div>
@@ -216,7 +250,7 @@ const About = () => {
                 <div className="container-custom">
                     <div className="text-center mb-16">
                         <p className="text-gold text-sm tracking-[0.4em] uppercase mb-3">Our Experts</p>
-                        <h2 className="font-serif text-4xl md:text-5xl">Meet The Team</h2>
+                        <h2 className="font-serif text-4xl md:text-5xl">Work with Our Expert Team</h2>
                     </div>
 
                     <div className="px-4 md:px-12">
@@ -227,11 +261,12 @@ const About = () => {
                                     loop: true,
                                 }}
                                 setApi={setApi}
-                                className="w-full"
+                                className="w-full relative px-12 lg:px-20"
                             >
-                                <CarouselContent className="-ml-6 py-4">
+                                <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8 py-4">
                                     {teamMembers.map((member, index) => (
-                                        <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                                        <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-1/2 lg:basis-1/3">
+
                                             <motion.div
                                                 initial={{ opacity: 0, scale: 0.9 }}
                                                 whileInView={{ opacity: 1, scale: 1 }}
@@ -261,6 +296,14 @@ const About = () => {
                                         </CarouselItem>
                                     ))}
                                 </CarouselContent>
+
+                                {/* Navigation Arrows - High Visibility */}
+                                <CarouselPrevious
+                                    className="absolute -left-6 lg:-left-10 top-1/2 -translate-y-1/2 h-12 w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+                                />
+                                <CarouselNext
+                                    className="absolute -right-6 lg:-right-10 top-1/2 -translate-y-1/2 h-12 w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+                                />
                             </Carousel>
 
                             {/* Dots Navigation */}

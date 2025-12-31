@@ -2,7 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Portfolio from "./pages/Portfolio";
 import ModularKitchens from "./pages/ModularKitchens";
@@ -20,12 +22,37 @@ import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
 
+// Component to handle redirecting to home on refresh/initial load
+const HomeRedirect = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Disable browser automatic scroll restoration on refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // On the very first render (refresh), if path is not home, redirect to home
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true });
+    }
+
+    // Ensure we are at the top of the page on refresh
+    window.scrollTo(0, 0);
+  }, []); // Empty dependency array ensures this only runs once on mount
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <HomeRedirect />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<Portfolio />} />

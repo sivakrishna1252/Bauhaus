@@ -6,6 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 
@@ -113,14 +115,17 @@ export function TestimonialsSection() {
           "text-center max-w-2xl mx-auto mb-20 transition-all duration-1000",
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         )}>
-          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Testimonials</p>
+          <p className="text-gold text-sm tracking-[0.4em] uppercase mb-6">Client Experience</p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-background">
-            What Our Clients Say
+            Designed Around You
           </h2>
           <div className={cn(
-            "w-16 h-px bg-gold mx-auto mt-6 transition-transform duration-1000 origin-center",
+            "w-16 h-px bg-gold mx-auto mt-6 mb-6 transition-transform duration-1000 origin-center",
             isVisible ? "scale-x-100" : "scale-x-0"
           )} style={{ transitionDelay: '200ms' }} />
+          <p className="text-background/80 text-lg max-w-2xl mx-auto leading-relaxed" style={{textAlign: 'center'}}>
+            Our clients value our ability to listen, interpret, and translate ideas into well-crafted spaces.We focus on creating a smooth, collaborative experience from concept to completion.
+          </p>
         </div>
 
         {/* Testimonials Carousel */}
@@ -133,13 +138,14 @@ export function TestimonialsSection() {
             opts={{
               align: "start",
               loop: true,
+              duration: 60,
             }}
-            className="w-full"
+            className="w-full relative px-10 md:px-16 lg:px-20"
           >
             <CarouselContent className="-ml-6 select-none cursor-grab active:cursor-grabbing">
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
-                  <div className="relative p-10 lg:p-12 border border-background/10 card-hover h-full flex flex-col">
+                  <div className="relative p-7 md:p-10 lg:p-12 border border-background/10 card-hover h-full flex flex-col">
                     <Quote className="w-10 h-10 text-gold/30 mb-8 flex-shrink-0" />
                     <div className="flex-grow">
                       <p className="text-background/85 text-lg leading-relaxed mb-8 italic font-serif line-clamp-6">
@@ -155,21 +161,32 @@ export function TestimonialsSection() {
               ))}
             </CarouselContent>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mt-12">
-              {Array.from({ length: count }).map((_, index) => (
-                <button
-                  key={index}
-                  className={cn(
-                    "h-1.5 rounded-full transition-all duration-300",
-                    current === index + 1
-                      ? "w-8 bg-gold"
-                      : "w-1.5 bg-gold/20 hover:bg-gold/40"
-                  )}
-                  onClick={() => api?.scrollTo(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+            {/* Navigation Arrows - High Visibility */}
+            <CarouselPrevious
+              className="absolute -left-2 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+            />
+            <CarouselNext
+              className="absolute -right-2 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+            />
+
+            {/* Controls: Dots */}
+            <div className="flex flex-col items-center justify-center mt-12 gap-6 relative">
+              {/* Pagination Dots */}
+              <div className="flex justify-center gap-2">
+                {Array.from({ length: count }).map((_, index) => (
+                  <button
+                    key={index}
+                    className={cn(
+                      "h-1.5 rounded-full transition-all duration-300",
+                      current === index + 1
+                        ? "w-8 bg-gold"
+                        : "w-1.5 bg-gold/20 hover:bg-gold/40"
+                    )}
+                    onClick={() => api?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </Carousel>
         </div>

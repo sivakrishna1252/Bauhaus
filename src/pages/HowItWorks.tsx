@@ -13,45 +13,45 @@ const steps = [
     title: 'Meet Our Designer',
     subtitle: 'Know Your Goals',
     description:
-      'Bring in your floor plan and be specific about your needs. We will tackle the problem solving head on and arrive at your desired end goal.',
+      'Bring your floor plan and discuss your requirements, style, and lifestyle preferences. Our designers tackle every challenge to craft solutions that align with your vision.',
     details:
-      'Get a tentative quote - Knowing what budget you have or what you are comfortable spending can be a key piece of information that will help us guide you through this process.',
+      'Get a Tentative Quote: Understanding your budget or comfort level helps us guide you efficiently through the design process.',
   },
   {
     number: '02',
-    title: 'Book Us',
-    subtitle: '10% Payment on Preliminary Quote',
+    title: '2D/3D Design Strategy',
+    subtitle: 'Visualize Your Space',
     description:
-      'Book us with 10% of the preliminary quote. Welcome us onboard as your design partners!',
+      'Get detailed layouts, material options, and photorealistic 3D visuals. This step ensures that every corner of your home is planned for aesthetics and functionality before work begins.',
     details:
-      'Sign the mutual contract - This is an assurance between the firm and the client that work will be done in a timely and disciplined manner.',
+      'Finalize the Look: Approve designs and move forward with confidence.',
   },
   {
     number: '03',
-    title: 'Finalize Design',
-    subtitle: 'Design Sign Off',
+    title: 'Material Selection',
+    subtitle: 'Touch & Feel',
     description:
-      'Discuss your preferences in detail, then finalize the layout and 3D visuals. We can now move on to selection of materials and fabrications.',
+      'Choose from a curated selection of premium finishes, fabrics, and textures. We help you pick materials that balance durability, luxury, and your personal style.',
     details:
-      'All design details, materials, and fabrications that have been chosen so far in the process will be approved by the client.',
+      'Expert Guidance: Our team ensures that every material fits the design intent and budget.',
   },
   {
     number: '04',
-    title: 'Execution',
-    subtitle: '50% Payment, Then 40% on Completion',
+    title: 'Execution & Installation',
+    subtitle: 'Quality You Can Trust',
     description:
-      'Vendors are selected according to expertise, craftsmanship, and certification. We guarantee nothing but the best and most professional team.',
+      'Our skilled team handles everything—from carpentry and civil work to lighting and installation. We manage timelines and quality checks so you don’t have to.',
     details:
-      'Our project manager and designers will be in charge of supervising the ongoing work to ensure that everything is carried out correctly and smoothly.',
+      'Seamless Process: Regular updates keep you informed as your home takes shape.',
   },
   {
     number: '05',
-    title: 'Handover',
-    subtitle: 'Move In',
+    title: 'Handover & Support',
+    subtitle: 'Move In Stress-Free',
     description:
-      'Your space is ready! Move in to your beautifully designed new home and enjoy the transformation.',
+      'Walk into a finished, ready-to-live-in space. We provide a final walkthrough, ensure everything is perfect, and offer post-handover support for peace of mind.',
     details:
-      'Get your snag closure report and enjoy your new space with complete peace of mind.',
+      'Welcome Home: Your dream space is now a reality!',
   },
 ];
 
@@ -179,7 +179,7 @@ const HowItWorks = () => {
         </div>
       </section>
 
-      {/* ✅ UPDATED CTA SECTION BG */}
+      {/* UPDATED CTA SECTION BG */}
       <section className="section-padding bg-[#F2F2F2]" ref={ctaRef}>
 
         <div className="container-custom">
@@ -213,7 +213,7 @@ const HowItWorks = () => {
               </p>
 
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
-                Your Dream Space Awaits
+                Design Consultation
               </h2>
 
               <div
@@ -225,13 +225,11 @@ const HowItWorks = () => {
               />
 
               <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                We are here to guide you through every step of the process. Book
-                your free consultation today and let us bring your vision to
-                life.
+                At Bauhaus Spaces Pune, we guide you through every step of the interior design journey, from concept to completion when Whether it’s a residential home, luxury apartment, or projects like commercial space, our expert team ensures timeless of, when functional, and elegant interiors tailored to your lifestyle.
               </p>
 
               <Button variant="elegant" size="xl" asChild>
-                <Link to="/contact">Book Consultation</Link>
+                <Link to="/contact">Book Your Free Consultation</Link>
               </Button>
             </div>
           </div>

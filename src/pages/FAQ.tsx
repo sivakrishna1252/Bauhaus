@@ -5,39 +5,24 @@ import { useState } from 'react';
 
 const faqs = [
     {
-        question: 'How can I get in touch with Bau Haus Spaces?',
+        question: 'Do you provide turnkey interior services in Pune?',
         answer:
-            'You can reach us at info@bauhauspaces.com or call us at +91 8085010847. Our designer will contact you to understand your requirements and schedule a detailed consultation.',
+            'Yes, we offer comprehensive turnkey solutions, covering everything from design and material selection to execution and final handover. Our services include civil work, carpentry, lighting, painting, and furniture installation.',
     },
     {
-        question: 'How much does it cost to design a 1BHK, 2BHK, or 3BHK?',
+        question: 'What is the estimated cost for interior design?',
         answer:
-            'The cost depends on your requirements, materials, and scope of work. Please contact our team for an exact quotation.',
+            'The cost depends on material selection, customization, and the scope of work. We provide transparent pricing and customized packages tailored to your budget and lifestyle requirements.',
     },
     {
-        question: 'What services does Bau Haus Spaces offer?',
+        question: 'How long does it take to complete a project?',
         answer:
-            'We offer turnkey home interiors, modular kitchens, wardrobes, civil work, furniture design, and complete interior solutions.',
+            'A standard residential interior project typically takes 45 to 60 days for completion, depending on the size and complexity. We ensure timely delivery with a structured project management plan.',
     },
     {
-        question: 'What types of interior projects do you specialize in?',
+        question: 'Do you offer a warranty on your interiors?',
         answer:
-            'We specialize in modern, luxury, and functional residential interior projects.',
-    },
-    {
-        question: 'How many days does it take to complete the interior work?',
-        answer:
-            'Typically 45–60 days for 2BHK and up to 90 days for 3BHK projects.',
-    },
-    {
-        question: 'What is your refund policy?',
-        answer:
-            'A full refund is applicable only within 48 hours of advance payment, provided the design phase has not started.',
-    },
-    {
-        question: 'What is the design process at Bau Haus Spaces?',
-        answer:
-            'Consultation → Concept Design → Approvals → Execution → Final Handover.',
+            'Yes, we provide a 10-year warranty on modular furniture and finishes, ensuring long-lasting quality and peace of mind for our clients.',
     },
 ];
 
