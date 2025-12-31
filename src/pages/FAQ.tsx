@@ -5,24 +5,53 @@ import { useState } from 'react';
 
 const faqs = [
     {
-        question: 'Do you provide turnkey interior services in Pune?',
-        answer:
-            'Yes, we offer comprehensive turnkey solutions, covering everything from design and material selection to execution and final handover. Our services include civil work, carpentry, lighting, painting, and furniture installation.',
+        question: 'How can I get in touch with Bauhaus Spaces?',
+        answer: 'You can reach us via phone, email, or by submitting a consultation form on our website. Our team in Pune will respond promptly to discuss your interior design project.',
     },
     {
-        question: 'What is the estimated cost for interior design?',
-        answer:
-            'The cost depends on material selection, customization, and the scope of work. We provide transparent pricing and customized packages tailored to your budget and lifestyle requirements.',
+        question: 'How much does it cost to design a 1BHK, 2BHK, or 3BHK?',
+        answer: 'The cost of residential interior design varies based on project size, materials, and customization. At Bauhaus Spaces Pune, we provide a transparent cost estimate after understanding your requirements, ensuring the best value for your budget.',
     },
     {
-        question: 'How long does it take to complete a project?',
-        answer:
-            'A standard residential interior project typically takes 45 to 60 days for completion, depending on the size and complexity. We ensure timely delivery with a structured project management plan.',
+        question: 'What services does Bauhaus Spaces offer?',
+        answer: 'We offer comprehensive interior design services for residential and commercial projects. This includes space planning, modular kitchens, bedrooms, living rooms, bathrooms, turnkey interiors, custom furniture, and professional installation.',
     },
     {
-        question: 'Do you offer a warranty on your interiors?',
-        answer:
-            'Yes, we provide a 10-year warranty on modular furniture and finishes, ensuring long-lasting quality and peace of mind for our clients.',
+        question: 'What types of interior projects do you specialize in?',
+        answer: 'We specialize in residential homes, luxury apartments, penthouses, commercial offices, retail spaces, and bespoke modular kitchens in Pune and surrounding areas.',
+    },
+    {
+        question: 'How many days does it take to complete the interior work?',
+        answer: 'Project timelines vary based on scope, design complexity, and size of the space. Typically, residential projects range from 4–12 weeks, while commercial interiors may take longer. We ensure on-time delivery without compromising quality.',
+    },
+    {
+        question: 'What is your refund policy?',
+        answer: 'At Bauhaus Spaces Pune, we maintain transparent policies. Refunds and adjustments are handled according to the agreement terms, ensuring client satisfaction and trust throughout the project.',
+    },
+    {
+        question: 'What is the design process at Bauhaus Spaces?',
+        answer: (
+            <div>
+                Our design process includes:
+                <ul className="list-disc pl-5 mt-2 space-y-2">
+                    <li>
+                        <strong>Consultation & Requirement Analysis</strong> – Understanding your lifestyle, vision, and budget.
+                    </li>
+                    <li>
+                        <strong>Concept & Layout Design</strong> – Tailored space planning and 3D visualization.
+                    </li>
+                    <li>
+                        <strong>Material Selection & Detailing</strong> – Choosing finishes, furniture, and hardware.
+                    </li>
+                    <li>
+                        <strong>Execution & Installation</strong> – Professional implementation with quality checks.
+                    </li>
+                    <li>
+                        <strong>Handover & Support</strong> – Ensuring your interiors are ready for functional, stylish living.
+                    </li>
+                </ul>
+            </div>
+        ),
     },
 ];
 
