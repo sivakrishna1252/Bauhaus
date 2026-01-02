@@ -59,74 +59,68 @@ export function Footer() {
           {/* Quick Links */}
           <div
             className={cn(
-              "transition-all duration-700",
+              "lg:col-span-1 transition-all duration-700",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
             style={{ transitionDelay: "150ms" }}
           >
-            <h4 className="font-serif text-xl text-background mb-6">Quick Links</h4>
-            <ul className="space-y-3" >
+            <h4 className="font-serif text-xl text-background mb-4">Quick Links</h4>
+            <div className="flex flex-col gap-3">
               {[
                 { href: '/portfolio', label: 'Our Portfolio' },
-                { href: '/modular-kitchens', label: 'Modular Kitchens' },
                 { href: '/bathrooms', label: 'Bathrooms' },
                 { href: '/how-it-works', label: 'How It Works' },
                 { href: '/contact', label: 'Contact Us' },
               ].map((link) => (
-                <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-sm text-background/60 hover:text-background transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-background/60 hover:text-background transition-colors duration-300"
+                >
+                  {link.label}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Services */}
           <div
             className={cn(
-              "transition-all duration-700",
+              "lg:col-span-1 transition-all duration-700",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
             style={{ transitionDelay: "300ms" }}
           >
-            <h4 className="font-serif text-xl text-background mb-6">Services</h4>
-            <ul className="space-y-3">
+            <h4 className="font-serif text-xl text-background mb-4">Services</h4>
+            <div className="flex flex-col gap-3">
               {[
                 'Full Home Interiors',
-                'Modular Kitchens',
                 'Bathroom Renovations',
                 'Civil Work',
                 'Furniture Design',
               ].map((service) => (
-                <li key={service}>
-                  <span className="text-sm text-background/60">{service}</span>
-                </li>
+                <span key={service} className="text-sm text-background/60">{service}</span>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Contact */}
           <div
             className={cn(
-              "transition-all duration-700",
+              "lg:col-span-1 transition-all duration-700",
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}
             style={{ transitionDelay: "450ms" }}
           >
-            <h4 className="font-serif text-xl text-background mb-6">Contact Us</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+            <h4 className="font-serif text-xl text-background mb-4">Contact Us</h4>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                <span className="text-sm text-background/60">
-                  <Link to="https://www.google.com/maps/place/C-4+2nd+Floor+Hermes+Vishal,+Lane+no.+7,+Koregaon+Park,+Pune/@18.5196666,73.8666666,17z/data=!3m1!4b1!4m5!3m4!1s0x3bc2b3b3b3b3b3b3:0x3b3b3b3b3b3b3b3b!8m2!3d18.5196666!4d73.8666666" target="_blank" rel="noopener noreferrer" className="text-sm text-background/60 hover:text-background transition-colors duration-300">C-4, 2nd Floor, Hermes Vishal,<br />
-                    Lane no. 7, Koregaon Park, Pune</Link>
-                </span>
-              </li>
-              <li>
+                <Link to="https://www.google.com/maps/place/C-4+2nd+Floor+Hermes+Vishal,+Lane+no.+7,+Koregaon+Park,+Pune/@18.5196666,73.8666666,17z/data=!3m1!4b1!4m5!3m4!1s0x3bc2b3b3b3b3b3b3:0x3b3b3b3b3b3b3b3b!8m2!3d18.5196666!4d73.8666666" target="_blank" rel="noopener noreferrer" className="text-sm text-background/60 hover:text-background transition-colors duration-300">
+                  C-4, Hermes Vishal, Lane 7, KP, Pune
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-6">
                 <a
                   href="tel:+918085010847"
                   className="flex items-center gap-3 text-sm text-background/60 hover:text-background transition-colors duration-300"
@@ -134,8 +128,6 @@ export function Footer() {
                   <Phone className="w-5 h-5 text-gold shrink-0" />
                   +91 808 5010 847
                 </a>
-              </li>
-              <li>
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=info@bauhauspaces.com"
                   className="flex items-center gap-3 text-sm text-background/60 hover:text-background transition-colors duration-300"
@@ -143,8 +135,8 @@ export function Footer() {
                   <Mail className="w-5 h-5 text-gold shrink-0" />
                   info@bauhauspaces.com
                 </a>
-              </li>
-            </ul>
+              </div>
+            </div>
           </div>
 
         </div>

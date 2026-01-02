@@ -2,7 +2,7 @@ import { Layout } from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import heroImage from '@/assets/hero-living-room.jpg';
+import heroImage from '@/assets/Blogs.jpg';
 import placeholderImage from '@/assets/project-1.jpg';
 import { fetchBlogs } from '@/lib/api';
 

@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
-import heroImage from '@/assets/hero-living-room.jpg';
+import heroImage from '@/assets/carrers.jpg';
 
 const openings = [
     {

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { ArrowUpRight } from 'lucide-react';
 import kitchenImage from '@/assets/kitchen-service.jpg';
 import bathroomImage from '@/assets/bathroom-service.jpg';
-import bedroomImage from '@/assets/bedroom-service.jpg';
+import bedroomImage from '@/assets/Renovation.jpg';
 
 const services = [
   {
@@ -69,13 +69,13 @@ export function ServicesSection() {
             >
               {/* Image with zoom */}
               <div className={cn(
-                "aspect-[4/5] img-scale-reveal",
+                "img-scale-reveal overflow-hidden max-w-sm mx-auto",
                 isVisible && "is-visible"
               )}>
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto"
                 />
               </div>
 

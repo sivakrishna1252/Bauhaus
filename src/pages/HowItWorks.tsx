@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import consultationImage from '@/assets/consultation.jpg';
-import heroImage from '@/assets/hero-living-room.jpg';
+import consultationImage from '@/assets/Consulation.png';
+import heroImage from '@/assets/how it works.jpg';
 
 const steps = [
   {
@@ -15,32 +15,32 @@ const steps = [
     description:
       'Bring your floor plan and discuss your requirements, style, and lifestyle preferences. Our designers tackle every challenge to craft solutions that align with your vision.',
     details:
-      'Get a Tentative Quote: Understanding your budget or comfort level helps us guide you efficiently through the design process.',
+      'Get a Tentative Quote: Understanding your budget or comfort level helps us guide you efficiently through the design process',
   },
   {
     number: '02',
-    title: '2D/3D Design Strategy',
+    title: 'Book Us',
     subtitle: 'Visualize Your Space',
     description:
-      'Get detailed layouts, material options, and photorealistic 3D visuals. This step ensures that every corner of your home is planned for aesthetics and functionality before work begins.',
+      'Confirm your project with 10% of the preliminary quote and officially onboard Bauhaus Spaces Pune as your design partner..',
     details:
-      'Finalize the Look: Approve designs and move forward with confidence.',
+      'Sign the Mutual Contract: This ensures timely, disciplined execution and a clear understanding of responsibilities between client and firm.  ',
   },
   {
     number: '03',
-    title: 'Material Selection',
-    subtitle: 'Touch & Feel',
+    title: 'Finalize Design ',
+    subtitle: 'Design Sign-Off  ',
     description:
-      'Choose from a curated selection of premium finishes, fabrics, and textures. We help you pick materials that balance durability, luxury, and your personal style.',
+      'Collaborate on detailed preferences, layout, and 3D visuals. After approval, we move on to material selection and Upholstery planning.Client Approval All desig:n elements, materials, and Upholstery are finalized with client consent to ensure complete satisfaction.  .',
     details:
       'Expert Guidance: Our team ensures that every material fits the design intent and budget.',
   },
   {
     number: '04',
-    title: 'Execution & Installation',
-    subtitle: 'Quality You Can Trust',
+    title: 'Execution',
+    subtitle: '50% Payment During Execution, 40% on Completion  ',
     description:
-      'Our skilled team handles everything—from carpentry and civil work to lighting and installation. We manage timelines and quality checks so you don’t have to.',
+      'We select vendors and craftsmen based on expertise, quality, and certifications. Our project manager and designers supervise every stage, ensuring that work is executed smoothly, professionally, and to luxury standard',
     details:
       'Seamless Process: Regular updates keep you informed as your home takes shape.',
   },
@@ -49,7 +49,7 @@ const steps = [
     title: 'Handover & Support',
     subtitle: 'Move In Stress-Free',
     description:
-      'Walk into a finished, ready-to-live-in space. We provide a final walkthrough, ensure everything is perfect, and offer post-handover support for peace of mind.',
+      'Your space is now ready! Move into your beautifully designed home or office and experience the transformation. Snag Closure Report: Receive a detailed handover report, ensuring your interiors meet our high standards and your expectations. Enjoy your new space with complete peace of mind',
     details:
       'Welcome Home: Your dream space is now a reality!',
   },
@@ -111,8 +111,10 @@ const HowItWorks = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-background/80 text-lg leading-relaxed"
             >
-              5 simple steps to make your space an ace space. Our structured
-              approach ensures a smooth journey from concept to completion.
+              5 simple steps to make your space an ace space.
+              <br />
+              At Bauhaus Spaces Pune, we follow a structured, transparent approach to ensure a smooth journey from concept to completion. Whether it’s a residential home or commercial project, our process guarantees timely, high-quality, and luxurious results.
+              <br />
             </motion.p>
           </div>
         </div>
@@ -186,7 +188,7 @@ const HowItWorks = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div
               className={cn(
-                'aspect-square img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden',
+                'img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden max-w-xl mx-auto',
                 ctaVisible
                   ? 'opacity-100 translate-x-0 is-visible'
                   : 'opacity-0 -translate-x-12'
@@ -195,7 +197,7 @@ const HowItWorks = () => {
               <img
                 src={consultationImage}
                 alt="Design consultation"
-                className="w-full h-full object-cover"
+                className="w-full h-auto"
               />
             </div>
 

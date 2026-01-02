@@ -6,7 +6,7 @@ import { Phone, Mail, Headset } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { motion } from 'framer-motion';
-import heroImage from '@/assets/hero-living-room.jpg';
+import heroImage from '@/assets/contact.jpg';
 import {
   Select,
   SelectTrigger,

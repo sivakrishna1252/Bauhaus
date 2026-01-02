@@ -4,28 +4,16 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import taiken from '@/assets/Taiken 08.png';
+import fahem from '@/assets/fahem.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
 
-const commercialProjects = [
-    {
-        title: 'Urban Office Space',
-        client: 'Tech Solutions Inc.',
-        location: 'Hinjewadi, Pune',
-        image: project2,
-        description: 'A modern commercial interior in Hinjewadi, Pune, designed as an open-plan office that fosters collaboration and productivity. The workspace combines functional layouts, contemporary design elements, and premium finishes, creating a professional and inspiring environment tailored to the client’s business needs.',
-    },
-    {
-        title: 'Taiken The Pan Asian',
-        client: 'Taiken',
-        location: 'Kharadi, Pune',
-        image: project3, // Choosing project3 for variety if needed or keep consistent
-        description: 'A bold and atmospheric interior design for a Pan Asian restaurant in Kharadi, Pune. The space blends traditional Asian aesthetics with modern industrial elements, creating an immersive dining experience. Features include warm lighting, textured walls, and bespoke seating arrangements.',
-    },
-];
+import { projects } from '@/data/projects';
 
 const CommercialProjects = () => {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const commercialProjects = projects.filter(p => p.type === 'commercial');
 
     return (
         <Layout>
@@ -38,7 +26,7 @@ const CommercialProjects = () => {
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <img
-                        src={project3}
+                        src={commercialProjects[0]?.image || taiken}
                         alt="Commercial Projects Hero"
                         className="w-full h-full object-cover opacity-40"
                     />
@@ -84,29 +72,39 @@ const CommercialProjects = () => {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
                         {commercialProjects.map((project, index) => (
-                            <div
-                                key={project.title}
+                            <Link
+                                key={project.id}
+                                to={`/project/${project.id}`}
                                 className={cn(
-                                    "group card-hover transition-all duration-700",
+                                    "group card-hover transition-all duration-700 block h-full",
                                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                                 )}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
-                                <div className={cn(
-                                    "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
-                                    isVisible && "is-visible"
-                                )}>
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-neutral-100 h-full flex flex-col">
+                                    <div className={cn(
+                                        "aspect-[16/11] img-scale-reveal overflow-hidden",
+                                        isVisible && "is-visible"
+                                    )}>
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    </div>
+                                    <div className="p-8 md:p-10 flex flex-col items-start text-left flex-grow">
+                                        <p className="text-gold text-xs tracking-[0.4em] uppercase mb-4 font-semibold">{project.location}</p>
+                                        <h3 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 group-hover:text-gold transition-colors duration-300 leading-tight">{project.title}</h3>
+                                        <div className="w-16 h-px bg-gold/40 mb-6" />
+                                        <p className="text-gold font-semibold mb-3 text-[11px] tracking-[0.2em] uppercase">Designed for {project.client}</p>
+                                        <p className="text-neutral-600 leading-relaxed text-base lg:text-lg text-justify line-clamp-3">{project.description}</p>
+                                        <div className="mt-6 inline-flex items-center text-gold font-medium group/btn">
+                                            View Project Details
+                                            <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">{project.location}</p>
-                                <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-3 group-hover:text-gold transition-colors duration-300">{project.title}</h3>
-                                <p className="text-muted-foreground mb-2">{project.client}</p>
-                                <p className="text-muted-foreground/70 leading-relaxed">{project.description}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 
@@ -116,10 +114,10 @@ const CommercialProjects = () => {
                         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                     )} style={{ transitionDelay: '500ms' }}>
                         <p className="text-muted-foreground text-lg mb-8">
-                            Ready to transform your workspace?
+                            Elevate your business with luxury commercial interiors — functional, inspiring, and tailored for Pune-based companies.
                         </p>
                         <Button variant="elegant" size="xl" asChild>
-                            <Link to="/contact">Start Your Commercial Project</Link>
+                            <Link to="/contact">Start Your Commercial Project Today</Link>
                         </Button>
                     </div>
                 </div>

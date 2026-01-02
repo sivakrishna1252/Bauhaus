@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
-import heroImage1 from '@/assets/hero-living-room.jpg';
-import heroImage2 from '@/assets/kitchen-service.jpg';
-import heroImage3 from '@/assets/bedroom-service.jpg';
+import heroImage1 from '@/assets/banner 1.jpg';
+import heroImage2 from '@/assets/banner 2.jpg';
+import heroImage3 from '@/assets/banner 3.jpg';
 
 const slides = [
   {
@@ -23,7 +23,7 @@ const slides = [
     subtitle: "Modern interior design inspired by clarity, function, and timeless elegance.",
     title: "Design That Works. Spaces That Last.",
     highlight: "",
-    description: "At Bauhaus-Spaces, we create interiors where form follows function. Every space is thoughtfully planned, expertly executed, and designed to remain relevant beyond trends.",
+    description: "At Bauhaus-Spaces, we create interiors that balance aesthetics and purpose. Rooted in modern design principles, our spaces are thoughtful, refined, and built to enhance everyday living",
     ctaPrimary: { text: "Book a Consultation", link: "/contact" },
     ctaSecondary: { text: "Explore Our Work", link: "/portfolio" }
   },
@@ -32,7 +32,7 @@ const slides = [
     subtitle: "Sanctuaries of Comfort and Elegance",
     title: "Minimalistic Bedroom Design",
     highlight: "",
-    description: "Create your personal retreat with bespoke bedroom interiors designed for calm, comfort, and balance. Every detail is thoughtfully crafted to reflect your lifestyle and enhance everyday living.",
+    description: "Every interior we design is tailored to the client’s lifestyle, ensuring a seamless balance between comfort, usability, and visual harmony. ",
     ctaPrimary: { text: "Book a Consultation", link: "/contact" },
     ctaSecondary: { text: "View Portfolio", link: "/portfolio" }
   }

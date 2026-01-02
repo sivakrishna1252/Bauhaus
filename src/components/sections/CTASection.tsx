@@ -79,7 +79,7 @@ export function CTASection() {
           </Button>
 
           <Button variant="elegant-outline" size="xl" asChild>
-            <a href="tel:+918085010847">Call +91 808 5010 847</a>
+            <a href="tel:+918085010847">Call</a>
           </Button>
         </div>
       </div>

@@ -17,64 +17,14 @@ import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
 
-// Duplicated data to simulate more projects for the slider
-const projects = [
-  {
-    title: 'Modern Family Residence',
-    client: 'Mr. Somesh & Priyanka',
-    location: 'Koregaon Park, Pune',
-    image: project1,
-    category: 'Residential'
-  },
-  {
-    title: 'Contemporary Villa',
-    client: 'Mr. Prashant & Mrs. Vatika',
-    location: 'Kalyani Nagar, Pune',
-    image: project2,
-    category: 'Residential'
-  },
-  {
-    title: 'Luxury Penthouse',
-    client: 'Mr. Upendra',
-    location: 'Viman Nagar, Pune',
-    image: project3,
-    category: 'Residential'
-  },
-  {
-    title: 'Serene Apartment',
-    client: 'Rahul & Nisha',
-    location: 'Baner, Pune',
-    image: project1, // Placeholder image
-    category: 'Residential'
-  },
-  {
-    title: 'Urban Office Space',
-    client: 'Tech Solutions Inc.',
-    location: 'Hinjewadi, Pune',
-    image: project2, // Placeholder image
-    category: 'Commercial'
-  },
-  {
-    title: 'Minimalist Studio',
-    client: 'Ms. Ananya',
-    location: 'Aundh, Pune',
-    image: project3, // Placeholder image
-    category: 'Residential'
-  },
-  {
-    title: 'Taiken The Pan Asian',
-    client: 'Taiken',
-    location: 'Kharadi, Pune',
-    image: project2, // Placeholder image
-    category: 'Commercial'
-  }
-];
+import { projects } from '@/data/projects';
 
+// Stats data remains same
 const statsCodes = [
   { value: 200, suffix: '+', label: 'Projects Completed' },
   { value: 10, suffix: '+', label: 'Years of Experience' },
   { value: 100, suffix: '%', label: 'Client Satisfaction' },
-  { value: 10, suffix: '', label: 'Years Warranty (Upto)' },
+  { value: 10, suffix: '', label: 'Years Warranty' },
 ];
 
 function Counter({ value, suffix, className }: { value: number; suffix: string; className?: string }) {
@@ -186,14 +136,14 @@ export function ProjectsSection() {
               loop: true,
               duration: 60,
             }}
-            className="w-full relative px-10 md:px-16 lg:px-20"
+            className="w-full relative px-4 md:px-8 lg:px-12"
           >
             <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8">
               {projects.map((project, index) => (
-                <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-full lg:basis-1/2">
                   <Link
-                    to="/portfolio"
-                    className="group relative block aspect-[4/5] overflow-hidden card-hover rounded-2xl"
+                    to={`/project/${project.id}`}
+                    className="group relative block aspect-[4/5] overflow-hidden cursor-pointer rounded-2xl"
                   >
                     <div className="w-full h-full img-scale-reveal is-visible">
                       <img
@@ -205,7 +155,7 @@ export function ProjectsSection() {
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-100" />
 
                     <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-gold-light text-xs tracking-widest uppercase mb-2">{project.category} • {project.location}</p>
+                      <p className="text-gold-light text-xs tracking-widest uppercase mb-2">{project.type} • {project.location}</p>
                       <h3 className="font-serif text-xl lg:text-2xl text-background mb-2">{project.title}</h3>
                       <p className="text-background/70 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">{project.client}</p>
                     </div>
@@ -216,10 +166,10 @@ export function ProjectsSection() {
 
             {/* Navigation Arrows - High Visibility */}
             <CarouselPrevious
-              className="absolute -left-2 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+              className="absolute -left-1 md:-left-2 lg:-left-4 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
             />
             <CarouselNext
-              className="absolute -right-2 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
+              className="absolute -right-1 md:-right-2 lg:-right-4 top-1/2 -translate-y-1/2 h-9 w-9 md:h-12 md:w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
             />
 
             {/* Controls: Dots */}

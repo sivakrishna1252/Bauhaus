@@ -18,6 +18,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import CommercialProjects from "./pages/CommercialProjects";
 import ResidentialProjects from "./pages/ResidentialProjects";
+import ProjectDetail from "./pages/ProjectDetail";
 import Careers from "./pages/Careers";
 
 const queryClient = new QueryClient();
@@ -56,7 +57,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/modular-kitchens" element={<ModularKitchens />} />
+          {/* <Route path="/modular-kitchens" element={<ModularKitchens />} /> */}
           <Route path="/bathrooms" element={<Bathrooms />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/projects/commercial" element={<CommercialProjects />} />
           <Route path="/projects/residential" element={<ResidentialProjects />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/careers" element={<Careers />} />

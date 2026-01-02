@@ -4,6 +4,11 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import taiken from '@/assets/Taiken 08.png';
+import arpit from '@/assets/arpit.jpg';
+import sumit from '@/assets/sumit.png';
+import rajesh from '@/assets/rajesh.jpg';
+import fahem from '@/assets/fahem.jpg';
 import project1 from '@/assets/project-1.jpg';
 import project2 from '@/assets/project-2.jpg';
 import project3 from '@/assets/project-3.jpg';
@@ -11,53 +16,46 @@ import heroImage from '@/assets/hero-living-room.jpg';
 
 const projects = [
   {
-    title: 'Modern Family Residence',
-    client: 'Mr. Somesh & Priyanka',
-    location: 'Koregaon Park, Pune',
-    image: project1,
-    description: 'A contemporary residential interior in Koregaon Park, Pune, featuring open-plan living spaces, warm neutral tones, and a functional layout designed for modern family living. This home blends style and comfort, creating a personalized sanctuary that reflects the client’s taste while maximizing space and natural light.',
+    title: 'Elegant Home Interior',
+    client: 'Sumit Oswal',
+    location: 'Pune',
+    image: sumit,
+    description: 'An elegant residential interior designed for Sumit Oswal, featuring premium materials and a sophisticated design language that reflects modern luxury and personalized comfort.',
   },
   {
-    title: 'Contemporary Villa',
-    client: 'Mr. Prashant & Mrs. Vatika',
+    title: 'Modern Luxury Apartment',
+    client: 'Rajesh Mohapatra',
+    location: 'Pune',
+    image: rajesh,
+    description: 'A modern residential project designed for Rajesh Mohapatra, focusing on functionality and aesthetic appeal with high-quality finishes and bespoke furniture tailored for urban living.',
+  },
+  {
+    title: 'Contemporary Luxury Villa',
+    client: 'Faheem Shaikh',
     location: 'Kalyani Nagar, Pune',
-    image: project2,
-    description: 'A contemporary residential villa interior in Kalyani Nagar, Pune, designed to seamlessly blend modern aesthetics with traditional comfort. The space features elegant layouts, premium finishes, and thoughtfully curated design details, creating a luxurious yet functional environment tailored to the client’s lifestyle.',
+    image: fahem,
+    description: 'A contemporary residential villa interior designed for Faheem Shaikh, seamlessly blending modern aesthetics with traditional comfort through elegant layouts and premium finishes.',
   },
   {
-    title: 'Luxury Penthouse',
-    client: 'Mr. Upendra',
-    location: 'Viman Nagar, Pune',
-    image: project3,
-    description: 'A luxury penthouse interior in Viman Nagar, Pune, designed as a sophisticated urban retreat. The space features panoramic city views, premium finishes, and contemporary design elements, creating a refined and functional living experience tailored to modern lifestyles.',
-  },
-  {
-    title: 'Serene Apartment',
-    client: 'Rahul & Nisha',
-    location: 'Baner, Pune',
-    image: heroImage,
-    description: 'A minimalist residential interior in Baner, Pune, designed to create calm, functional, and uncluttered living spaces. This apartment combines clean lines, neutral tones, and thoughtful layouts, offering a serene sanctuary that reflects the client’s lifestyle while maximizing comfort and practicality.',
-  },
-  {
-    title: 'Urban Office Space',
-    client: 'Tech Solutions Inc.',
-    location: 'Hinjewadi, Pune',
-    image: project2,
-    description: 'A modern commercial interior in Hinjewadi, Pune, designed as an open-plan office that fosters collaboration and productivity. The workspace combines functional layouts, contemporary design elements, and premium finishes, creating a professional and inspiring environment tailored to the client’s business needs.',
-  },
-  {
-    title: 'Minimalist Studio',
-    client: 'Ms. Ananya',
+    title: 'Minimalist Studio Apartment',
+    client: 'Arpit',
     location: 'Aundh, Pune',
-    image: project3,
-    description: 'A compact studio apartment in Aundh, Pune, designed with a focus on smart usage of space. The interior features multi-functional furniture, a light color palette, and clever storage solutions, creating a spacious and airy feel within a limited footprint.',
+    image: arpit,
+    description: 'A compact studio apartment designed with a focus on smart usage of space. The interior features multi-functional furniture and a light color palette, creating a spacious feel.',
   },
   {
     title: 'Taiken The Pan Asian',
     client: 'Taiken',
     location: 'Kharadi, Pune',
-    image: project1,
+    image: taiken,
     description: 'A bold and atmospheric interior design for a Pan Asian restaurant in Kharadi, Pune. The space blends traditional Asian aesthetics with modern industrial elements, creating an immersive dining experience. Features include warm lighting, textured walls, and bespoke seating arrangements.',
+  },
+  {
+    title: 'Corporate Workspace',
+    client: 'Modular Office Solutions',
+    location: 'Hinjewadi, Pune',
+    image: project2,
+    description: 'A modern commercial interior designed as an open-plan office that fosters collaboration and productivity. The workspace combines functional layouts, contemporary design elements, and premium finishes, creating a professional and inspiring environment.',
   }
 ];
 
@@ -75,7 +73,7 @@ const Portfolio = () => {
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <img
-            src={project3}
+            src={taiken}
             alt="Portfolio Hero"
             className="w-full h-full object-cover opacity-40"
           />
@@ -129,20 +127,25 @@ const Portfolio = () => {
                 )}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className={cn(
-                  "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
-                  isVisible && "is-visible"
-                )}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-neutral-100 h-full flex flex-col">
+                  <div className={cn(
+                    "aspect-[16/11] img-scale-reveal overflow-hidden",
+                    isVisible && "is-visible"
+                  )}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8 md:p-10 flex flex-col items-start text-left flex-grow">
+                    <p className="text-gold text-xs tracking-[0.4em] uppercase mb-4 font-semibold">{project.location}</p>
+                    <h3 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 group-hover:text-gold transition-colors duration-300 leading-tight">{project.title}</h3>
+                    <div className="w-16 h-px bg-gold/40 mb-6" />
+                    <p className="text-gold font-semibold mb-3 text-[11px] tracking-[0.2em] uppercase">Designed for {project.client}</p>
+                    <p className="text-neutral-600 leading-relaxed text-base lg:text-lg text-justify">{project.description}</p>
+                  </div>
                 </div>
-                <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">{project.location}</p>
-                <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-3 group-hover:text-gold transition-colors duration-300">{project.title}</h3>
-                <p className="text-muted-foreground mb-2">{project.client}</p>
-                <p className="text-muted-foreground/70 leading-relaxed">{project.description}</p>
               </div>
             ))}
           </div>
@@ -153,10 +156,10 @@ const Portfolio = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           )} style={{ transitionDelay: '500ms' }}>
             <p className="text-muted-foreground text-lg mb-8">
-              Ready to create your own story?
+              Elevate your business with luxury commercial interiors — functional, inspiring, and tailored for Pune-based companies.
             </p>
             <Button variant="elegant" size="xl" asChild>
-              <Link to="/contact">Start Your Project</Link>
+              <Link to="/contact">Start Your Project </Link>
             </Button>
           </div>
         </div>

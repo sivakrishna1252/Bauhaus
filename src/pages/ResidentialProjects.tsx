@@ -4,51 +4,16 @@ import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-import project1 from '@/assets/project-1.jpg';
-import project2 from '@/assets/project-2.jpg';
-import project3 from '@/assets/project-3.jpg';
-import heroImage from '@/assets/hero-living-room.jpg';
+import sumit from '@/assets/sumit.png';
+import rajesh from '@/assets/rajesh.jpg';
+import fahem from '@/assets/fahem.jpg';
+import arpit from '@/assets/arpit.jpg';
 
-const residentialProjects = [
-    {
-        title: 'Modern Family Residence',
-        client: 'Mr. Somesh & Priyanka',
-        location: 'Koregaon Park, Pune',
-        image: project1,
-        description: 'A contemporary residential interior in Koregaon Park, Pune, featuring open-plan living spaces, warm neutral tones, and a functional layout designed for modern family living. This home blends style and comfort, creating a personalized sanctuary that reflects the client’s taste while maximizing space and natural light.',
-    },
-    {
-        title: 'Contemporary Villa',
-        client: 'Mr. Prashant & Mrs. Vatika',
-        location: 'Kalyani Nagar, Pune',
-        image: project2, // Reusing appropriate image
-        description: 'A contemporary residential villa interior in Kalyani Nagar, Pune, designed to seamlessly blend modern aesthetics with traditional comfort. The space features elegant layouts, premium finishes, and thoughtfully curated design details, creating a luxurious yet functional environment tailored to the client’s lifestyle.',
-    },
-    {
-        title: 'Luxury Penthouse',
-        client: 'Mr. Upendra',
-        location: 'Viman Nagar, Pune',
-        image: project3, // Reusing appropriate image
-        description: 'A luxury penthouse interior in Viman Nagar, Pune, designed as a sophisticated urban retreat. The space features panoramic city views, premium finishes, and contemporary design elements, creating a refined and functional living experience tailored to modern lifestyles.',
-    },
-    {
-        title: 'Serene Apartment',
-        client: 'Rahul & Nisha',
-        location: 'Baner, Pune',
-        image: heroImage,
-        description: 'A minimalist residential interior in Baner, Pune, designed to create calm, functional, and uncluttered living spaces. This apartment combines clean lines, neutral tones, and thoughtful layouts, offering a serene sanctuary that reflects the client’s lifestyle while maximizing comfort and practicality.',
-    },
-    {
-        title: 'Minimalist Studio',
-        client: 'Ms. Ananya',
-        location: 'Aundh, Pune',
-        image: project1, // Reusing appropriate image
-        description: 'A compact studio apartment in Aundh, Pune, designed with a focus on smart usage of space. The interior features multi-functional furniture, a light color palette, and clever storage solutions, creating a spacious and airy feel within a limited footprint.',
-    },
-];
+import { projects } from '@/data/projects';
 
 const ResidentialProjects = () => {
     const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+    const residentialProjects = projects.filter(p => p.type === 'residential');
 
     return (
         <Layout>
@@ -61,7 +26,7 @@ const ResidentialProjects = () => {
                     transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 >
                     <img
-                        src={project1}
+                        src={residentialProjects[0]?.image || rajesh}
                         alt="Residential Projects Hero"
                         className="w-full h-full object-cover opacity-40"
                     />
@@ -107,29 +72,39 @@ const ResidentialProjects = () => {
                 <div className="container-custom">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
                         {residentialProjects.map((project, index) => (
-                            <div
-                                key={project.title}
+                            <Link
+                                key={project.id}
+                                to={`/project/${project.id}`}
                                 className={cn(
-                                    "group card-hover transition-all duration-700",
+                                    "group card-hover transition-all duration-700 block h-full",
                                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                                 )}
                                 style={{ transitionDelay: `${index * 100}ms` }}
                             >
-                                <div className={cn(
-                                    "aspect-[16/12] img-scale-reveal mb-8 rounded-2xl overflow-hidden",
-                                    isVisible && "is-visible"
-                                )}>
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover"
-                                    />
+                                <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-neutral-100 h-full flex flex-col">
+                                    <div className={cn(
+                                        "aspect-[16/11] img-scale-reveal overflow-hidden",
+                                        isVisible && "is-visible"
+                                    )}>
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    </div>
+                                    <div className="p-8 md:p-10 flex flex-col items-start text-left flex-grow">
+                                        <p className="text-gold text-xs tracking-[0.4em] uppercase mb-4 font-semibold">{project.location}</p>
+                                        <h3 className="font-serif text-3xl lg:text-4xl text-foreground mb-4 group-hover:text-gold transition-colors duration-300 leading-tight">{project.title}</h3>
+                                        <div className="w-16 h-px bg-gold/40 mb-6" />
+                                        <p className="text-gold font-semibold mb-3 text-[11px] tracking-[0.2em] uppercase">Designed for {project.client}</p>
+                                        <p className="text-neutral-600 leading-relaxed text-base lg:text-lg text-justify line-clamp-3">{project.description}</p>
+                                        <div className="mt-6 inline-flex items-center text-gold font-medium group/btn">
+                                            View Project Details
+                                            <span className="ml-2 transition-transform group-hover/btn:translate-x-1">→</span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="text-gold text-xs tracking-[0.3em] uppercase mb-3">{project.location}</p>
-                                <h3 className="font-serif text-2xl lg:text-3xl text-foreground mb-3 group-hover:text-gold transition-colors duration-300">{project.title}</h3>
-                                <p className="text-muted-foreground mb-2">{project.client}</p>
-                                <p className="text-muted-foreground/70 leading-relaxed">{project.description}</p>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 

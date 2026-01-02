@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import heroImage from '@/assets/project-1.jpg';
+import heroImage from '@/assets/faq.jpg';
 import { useState } from 'react';
 
 const faqs = [

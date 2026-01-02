@@ -1,16 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import {
-    Carousel,
-    CarouselApi,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from '@/components/ui/carousel';
-import { CircleDollarSign, TrendingUp, Users, Linkedin, Twitter, Instagram } from 'lucide-react';
-import heroImage from '@/assets/hero-living-room.jpg';
+import { CircleDollarSign, TrendingUp, Users } from 'lucide-react';
+import heroImage from '@/assets/about.jpg';
 import project1 from '@/assets/project-1.jpg'; // Placeholder for team/collage
 
 const fadeInUp = {
@@ -19,66 +11,15 @@ const fadeInUp = {
 };
 
 const teamMembers = [
-    { name: "Arjun Mehta", role: "Principal Architect", image: project1 },
-    { name: "Sara Ali", role: "Interior Designer", image: project1 },
-    { name: "Rohan Das", role: "Project Manager", image: project1 },
-    { name: "Priya Sharma", role: "3D Visualizer", image: project1 },
-    { name: "Vikram Singh", role: "Site Supervisor", image: project1 },
-    { name: "Ananya Roy", role: "Stylist", image: project1 },
+    { name: "Arjun Mehta", role: "Principal Architect", image: project1, level: 0 },
+    { name: "Sara Ali", role: "Interior Designer", image: project1, level: 1 },
+    { name: "Rohan Das", role: "Project Manager", image: project1, level: 1 },
+    { name: "Priya Sharma", role: "3D Visualizer", image: project1, level: 1 },
+    { name: "Vikram Singh", role: "Site Supervisor", image: project1, level: 2 },
+    { name: "Ananya Roy", role: "Stylist", image: project1, level: 2 },
 ];
 
 const About = () => {
-    const [api, setApi] = useState<CarouselApi>();
-    const [current, setCurrent] = useState(0);
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        if (!api) {
-            return;
-        }
-
-        setCount(api.scrollSnapList().length);
-        setCurrent(api.selectedScrollSnap() + 1);
-
-        api.on("select", () => {
-            setCurrent(api.selectedScrollSnap() + 1);
-        });
-    }, [api]);
-
-    // Autoplay effect
-    useEffect(() => {
-        if (!api) return;
-
-        let intervalId: NodeJS.Timeout;
-
-        const startAutoplay = () => {
-            intervalId = setInterval(() => {
-                api.scrollNext();
-            }, 4000); // Scroll every 4 seconds
-        };
-
-        const stopAutoplay = () => {
-            clearInterval(intervalId);
-        };
-
-        startAutoplay();
-
-        // Pause on hover
-        const carouselElement = api.rootNode();
-        if (carouselElement) {
-            carouselElement.addEventListener('mouseenter', stopAutoplay);
-            carouselElement.addEventListener('mouseleave', startAutoplay);
-        }
-
-        return () => {
-            stopAutoplay();
-            if (carouselElement) {
-                carouselElement.removeEventListener('mouseenter', stopAutoplay);
-                carouselElement.removeEventListener('mouseleave', startAutoplay);
-            }
-        };
-    }, [api]);
-
     return (
         <Layout>
             {/* Hero Section */}
@@ -245,79 +186,83 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Team Carousel Section */}
+            {/* Team Hierarchy Section */}
             <section className="py-24 bg-background overflow-hidden">
                 <div className="container-custom">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-20">
                         <p className="text-gold text-sm tracking-[0.4em] uppercase mb-3">Our Experts</p>
                         <h2 className="font-serif text-4xl md:text-5xl">Work with Our Expert Team</h2>
                     </div>
 
-                    <div className="px-4 md:px-12">
-                        <div className="relative">
-                            <Carousel
-                                opts={{
-                                    align: "start",
-                                    loop: true,
-                                }}
-                                setApi={setApi}
-                                className="w-full relative px-12 lg:px-20"
-                            >
-                                <CarouselContent className="-ml-4 md:-ml-6 lg:-ml-8 py-4">
-                                    {teamMembers.map((member, index) => (
-                                        <CarouselItem key={index} className="pl-4 md:pl-6 lg:pl-8 md:basis-1/2 lg:basis-1/3">
+                    <div className="relative max-w-5xl mx-auto px-4">
+                        {/* Organizational Structure */}
+                        <div className="flex flex-col items-center gap-16 md:gap-24 relative">
 
-                                            <motion.div
-                                                initial={{ opacity: 0, scale: 0.9 }}
-                                                whileInView={{ opacity: 1, scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                                className="group relative"
-                                            >
-                                                <div className="relative overflow-hidden rounded-2xl mb-6 shadow-md aspect-[3/4]">
-                                                    <img
-                                                        src={member.image}
-                                                        alt={member.name}
-                                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                                    />
-                                                </div>
-                                                <div className="text-center">
-                                                    <h3 className="font-serif text-xl group-hover:text-gold transition-colors">{member.name}</h3>
-                                                    <span className="inline-block mt-2 mb-4 px-3 py-1 bg-secondary/50 text-xs uppercase tracking-widest rounded-full text-muted-foreground border border-border/50">{member.role}</span>
-
-                                                    {/* Social Icons */}
-                                                    <div className="flex items-center justify-center gap-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                                                        <a href="#" className="text-muted-foreground hover:text-gold transition-colors"><Linkedin className="w-4 h-4" /></a>
-                                                        <a href="#" className="text-muted-foreground hover:text-gold transition-colors"><Twitter className="w-4 h-4" /></a>
-                                                        <a href="#" className="text-muted-foreground hover:text-gold transition-colors"><Instagram className="w-4 h-4" /></a>
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-
-                                {/* Navigation Arrows - High Visibility */}
-                                <CarouselPrevious
-                                    className="absolute -left-6 lg:-left-10 top-1/2 -translate-y-1/2 h-12 w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
-                                />
-                                <CarouselNext
-                                    className="absolute -right-6 lg:-right-10 top-1/2 -translate-y-1/2 h-12 w-12 bg-white border-2 border-gold/40 shadow-xl text-gold hover:bg-gold hover:text-white rounded-full transition-all duration-300 z-10"
-                                />
-                            </Carousel>
-
-                            {/* Dots Navigation */}
-                            <div className="flex justify-center gap-2 mt-12">
-                                {Array.from({ length: count }).map((_, index) => (
-                                    <button
-                                        key={index}
-                                        onClick={() => api?.scrollTo(index)}
-                                        className={`h-2 rounded-full transition-all duration-300 ${current === index + 1 ? "w-8 bg-gold" : "w-2 bg-neutral-300 hover:bg-gold/50"
-                                            }`}
-                                        aria-label={`Go to slide ${index + 1}`}
-                                    />
+                            {/* Level 0: Top */}
+                            <div className="relative">
+                                {teamMembers.filter(m => m.level === 0).map((member, idx) => (
+                                    <div key={idx} className="flex flex-col items-center text-center">
+                                        <div className="relative p-1 rounded-full border-2 border-gold/30 mb-4 transition-transform duration-500 hover:scale-105">
+                                            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg border-2 border-white">
+                                                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                            </div>
+                                        </div>
+                                        <h3 className="font-serif text-xl md:text-2xl text-foreground">{member.name}</h3>
+                                        <span className="text-xs uppercase tracking-widest text-gold font-medium mt-1">{member.role}</span>
+                                    </div>
                                 ))}
+                                {/* Line to next level (Desktop) */}
+                                <div className="hidden md:block absolute -bottom-12 left-1/2 w-0.5 h-12 bg-gold/40" />
                             </div>
+
+                            {/* Level 1: Middle */}
+                            <div className="relative w-full">
+                                {/* Horizontal line (Desktop) */}
+                                <div className="hidden md:block absolute -top-12 left-[16%] right-[16%] h-0.5 bg-gold/40" />
+
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+                                    {teamMembers.filter(m => m.level === 1).map((member, idx) => (
+                                        <div key={idx} className="relative flex flex-col items-center text-center">
+                                            {/* Vertical line from horizontal line (Desktop) */}
+                                            <div className="hidden md:block absolute -top-12 left-1/2 w-0.5 h-12 bg-gold/40" />
+
+                                            <div className="relative p-1 rounded-full border-2 border-gold/20 mb-4 transition-transform duration-500 hover:scale-105">
+                                                <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden shadow-md border-2 border-white">
+                                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                                </div>
+                                            </div>
+                                            <h3 className="font-serif text-lg md:text-xl text-foreground">{member.name}</h3>
+                                            <span className="text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground mt-1 px-3 py-1 bg-secondary/30 rounded-full">{member.role}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                {/* Line to next level (Desktop - from Rohan Das) */}
+                                <div className="hidden md:block absolute -bottom-12 left-1/2 w-0.5 h-12 bg-gold/40" />
+                            </div>
+
+                            {/* Level 2: Bottom */}
+                            <div className="relative w-full">
+                                {/* Horizontal line (Desktop) */}
+                                <div className="hidden md:block absolute -top-12 left-[33%] right-[33%] h-0.5 bg-gold/40" />
+
+                                <div className="flex flex-col md:flex-row justify-center gap-12 md:gap-24">
+                                    {teamMembers.filter(m => m.level === 2).map((member, idx) => (
+                                        <div key={idx} className="relative flex flex-col items-center text-center">
+                                            {/* Vertical line from horizontal line (Desktop) */}
+                                            <div className="hidden md:block absolute -top-12 left-1/2 w-0.5 h-12 bg-gold/40" />
+
+                                            <div className="relative p-1 rounded-full border-2 border-gold/10 mb-4 transition-transform duration-500 hover:scale-105">
+                                                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-sm border-2 border-white">
+                                                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                                </div>
+                                            </div>
+                                            <h3 className="font-serif text-lg text-foreground">{member.name}</h3>
+                                            <span className="text-[10px] md:text-xs uppercase tracking-widest text-muted-foreground/70 mt-1">{member.role}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

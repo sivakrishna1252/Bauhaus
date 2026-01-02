@@ -15,7 +15,7 @@ const terms = [
     },
     {
         icon: <Clock className="w-8 h-8 md:w-10 md:h-10 text-black" />,
-        title: <span className="font-serif text-xl md:text-2xl text-gold mb-3">45-Day Delivery</span>,
+        title: <span className="font-serif text-xl md:text-2xl text-gold mb-3">Book Us 10%</span>,
         description: 'We value your time. Guaranteed delivery and installation within 45 days of design finalization.',
     },
 ];

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import consultationImage from '@/assets/consultation.jpg';
+import consultationImage from '@/assets/Consulation.png';
 
 const steps = [
   {
@@ -54,14 +54,14 @@ export function ProcessSection() {
           {/* Image */}
           <div
             className={cn(
-              'aspect-square img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden',
+              'img-scale-reveal transition-all duration-1000 rounded-2xl overflow-hidden max-w-xl mx-auto',
             )}
           >
-            <div className="aspect-square overflow-hidden">
+            <div className="h-full w-full overflow-hidden">
               <img
                 src={consultationImage}
                 alt="Interior design consultation"
-                className="w-full h-full object-cover"
+                className="w-full h-auto"
               />
             </div>
             {/* square decorative box REMOVED */}
@@ -114,6 +114,6 @@ export function ProcessSection() {
           </Button>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
